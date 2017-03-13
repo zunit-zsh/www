@@ -1,0 +1,10 @@
+extends /layout
+
+block content
+  section.docs
+    include /includes/docs/_sidebar
+
+    article.docs--content
+      h1= post.title
+
+      block docs-content

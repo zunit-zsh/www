@@ -1,0 +1,27 @@
+---
+title: Installation
+seq: 1
+---
+
+extends /layouts/_docs
+
+block docs-content
+  :marked
+    ### Installing with [Zulu](https://zulu.sh) (recommended)
+
+    Installing with Zulu will handle building ZUnit from source, and installing all dependencies for you.
+
+    ```sh
+    zulu install zunit
+    ```
+
+    ### Installing Manually
+
+    First, install [revolver](https://github.com/molovo/revolver) and [color](https://github.com/molovo/color).
+
+    ```sh
+    git clone https://github.com/molovo/zunit
+    cd zunit
+    ./build.zsh
+    cp zunit /usr/local/bin
+    ```

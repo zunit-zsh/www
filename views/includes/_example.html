@@ -1,0 +1,8 @@
+<span class="comment">#!/usr/bin/env zunit</span>
+
+<span class="keyword">@test</span> <span class="punctuation">'</span><span class="string">App should run</span><span class="punctuation">'</span> <span class="punctuation">{</span>
+  <span class="command">run</span> my-app
+
+  <span class="command">assert</span> <span class="variable">$state</span> <span class="command">equals</span> <span class="integer">0</span>
+  <span class="command">assert</span> <span class="punctuation">"</span><span class="variable">$output</span><span class="punctuation">"</span> <span class="command">same_as</span> <span class="punctuation">"</span><span class="string">It worked!</span><span class="punctuation">"</span>
+<span class="punctuation">}</span>

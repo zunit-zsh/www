@@ -1,0 +1,22 @@
+.nav--main
+  align-items: center
+  display: flex
+  justify-content: flex-end
+  padding: $baseline #{4 * $baseline}
+
+  a
+    color: $color-black
+    margin-left: $baseline
+
+    &:first-child
+      margin-left: 0
+
+  &-logo
+    flex: 1 1 100%
+
+    strong
+      font-size: 1.5em
+      line-height: #{(1 / 1.5) * $baseline}
+
+    strong, span
+      display: block
