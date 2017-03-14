@@ -1,6 +1,6 @@
 $baseline: 1.5em
 $font-primary: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif
-$font-monospace: 'Operator Mono Book', 'Source Code Pro', 'Courier', monospace
+$font-monospace: 'Operator Mono Book', 'Operator Mono', 'Source Code Pro', 'Courier', monospace
 
 html
   font: 400 100% / #{$baseline} $font-primary
@@ -54,23 +54,24 @@ p, ul, ol, dl, blockquote
   margin-bottom: $baseline
 
 ul
-  list-style: disc inside
+  list-style: disc outside
+  margin-left: 1.25em
 
 ol
-  list-style: decimal inside
+  list-style: decimal outside
+  margin-left: 1.25em
 
 ul, ol
-  ul
-    list-style: circle inside
+  ul, ol
     margin:
       bottom: 0
-      left: $baseline
+      left: #{1.25 + $baseline}
+
+  ul
+    list-style: circle outside
 
   ol
-    list-style: lower-roman inside
-    margin:
-      bottom: 0
-      left: $baseline
+    list-style: lower-roman outside
 
 em
   font-style: italic
@@ -115,8 +116,12 @@ pre
   padding: $baseline
   width: 100%
 
+  code
+    padding: 0
+
 code
   background: rgba($color-black, .1)
+  border-radius: .15em
   font:
     family: $font-monospace
   padding: .25em

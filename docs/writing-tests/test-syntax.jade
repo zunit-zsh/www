@@ -6,10 +6,126 @@ seq: 0
 extends /layouts/_docs
 
 block docs-content
-  :marked
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  section
+    :marked
+      Tests in ZUnit have a simple syntax, which is inspired by the [BATS](https://github.com/sstephenson/bats) framework. You can add as many tests as you like to each test file, and the body of each test can contain any valid ZSH code.
+
+      There are only two rules you need to remember whilst writing your tests:
+      1. Test names must be unique within a file.
+      2. The shebang `#!/usr/bin/env zunit` **MUST** appear at the top of each test file, or ZUnit will not run it.
+
+  feature
+    :marked
+      ```zunit
+      #!/usr/bin/env zunit
+
+      @test 'My first test' {
+        # Test contents here
+      }
+      ```
+
+  section
+    :marked
+      ### Making Assertions
+
+      ZUnit comes with a powerful assertion library to aid you in writing your tests. The `assert` helper allows you to make assertions, which fail your test automatically if they are incorrect.
+
+      To see the full range of assertion methods available to you, take a look at their [documentation](/docs/writing-tests/assertions).
+
+      By default, tests which do not contain any assertions will be marked as risky, and result in an overall failure of the test run. You can disable this functionality by passing ZUnit the `--allow-risky` option.
+
+  feature
+    :marked
+      ```zunit
+
+
+      #!/usr/bin/env zunit
+
+      @test 'Testing assertions' {
+        assert 1 equals 1
+      }
+      ```
+
+  section
+    :marked
+      ### Loading scripts
+
+      Each of your tests is run in isolation, meaning that there is no variable or function leakage between tests. The `load` helper function will source a script into the test environment for you, allowing you to set up variables and functions etc.
+
+  feature.bump
+    :marked
+      ```zunit
+
+
+      ### In my-script.zsh:
+      export testing='Tada!'
+
+      ### In tests/my-script.zunit:
+      @test 'Test loading scripts' {
+        load ../my-script
+
+        # The $testing variable is now set here
+        assert "$testing" same_as 'Tada!'
+      }
+      ```
+
+  section
+    :marked
+      You can load any absolute or relative file path, and for files ending in `.zsh` including the extension is optional.
+
+  feature
+    :marked
+      ```zunit
+      # In the example above, the following are all equivalent
+      load ../my-script
+      load ../my-script.zsh
+      load /path/to/project/my-script
+      load /path/to/project/my-script.zsh
+      ```
+
+  section
+    :marked
+      ### Running commands
+
+      You can run commands within your tests using the `run` helper. Doing this stops a failing command from ending your test early, and allows you to make assertions on its exit status and output.
+
+  feature
+    :marked
+      ```zunit
+
+
+      @test 'Test command output' {
+        # Run the command, including arguments
+        run ls ~/my-dir
+      ```
+
+  section
+    :marked
+      The command's exit code is stored in the `$state` variable.
+
+  feature
+    :marked
+      ```zunit
+        assert $state equals 0
+      ```
+
+  section
+    :marked
+      The full output of the command is stored in `$output`.
+
+  feature
+    :marked
+      ```zunit
+        assert "$output" is_not_empty
+      ```
+
+  section
+    :marked
+      Each line of the output is also stored in the `$lines` array, allowing you to run assertions against individual lines.
+
+  feature
+    :marked
+      ```zunit
+        assert "${lines[3]}" equals 'my-third-file'
+      }
+      ```

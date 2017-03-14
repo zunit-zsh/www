@@ -7,6 +7,15 @@ block content
   .intro
     h1 A powerful testing framework for ZSH projects
 
+    feature.code-window
+      :marked
+        ```zunit
+        #!/usr/bin/env zunit
 
-    pre.code-window
-      code!= render('views/includes/_example.html')
+        @test 'App should run' {
+          run my-app
+
+          assert $state equals 0
+          assert "$output" same_as "It worked!"
+        }
+        ```

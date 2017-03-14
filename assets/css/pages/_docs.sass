@@ -1,10 +1,47 @@
 .docs
-  display: flex
   padding: 6em
 
   &--sidebar
     flex: 0 0 18em
 
   &--content
-    flex: 1 1 100%
-    max-width: 42em
+    align-content: stretch
+    display: flex
+    flex-wrap: wrap
+
+    > section, > feature
+      flex: 0 0 50%
+      width: 50%
+
+    > section
+      padding-right: $baseline
+
+    > feature
+      background: $color-black
+      box-sizing: border-box
+      // margin-right: #{-4 * $baseline}
+      margin-top: #{-1 * $baseline}
+      padding: $baseline
+      // padding: $baseline #{4 * $baseline} $baseline 0
+
+      &.bump
+        margin-bottom: $baseline
+
+      &:first-of-type
+        position: relative
+
+        &::before
+          background: $color-black
+          bottom: calc(100% - 1px)
+          content: ''
+          height: 100vh
+          left: 0
+          position: absolute
+          right: 0
+
+
+      pre
+        border: 0
+        max-width: 100%
+        overflow-x: auto
+        padding: 0

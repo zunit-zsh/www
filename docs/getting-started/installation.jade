@@ -6,22 +6,44 @@ seq: 1
 extends /layouts/_docs
 
 block docs-content
-  :marked
-    ### Installing with [Zulu](https://zulu.sh) (recommended)
+  section
+    :marked
+      ### Installing with [Zulu](https://zulu.sh) (recommended)
 
-    Installing with Zulu will handle building ZUnit from source, and installing all dependencies for you.
+      Installing with Zulu will handle building ZUnit from source, and installing all dependencies for you.
 
-    ```sh
-    zulu install zunit
-    ```
+  feature
+    :marked
+      ```bash
 
-    ### Installing Manually
 
-    First, install [revolver](https://github.com/molovo/revolver) and [color](https://github.com/molovo/color).
+      zulu install zunit
+      ```
 
-    ```sh
-    git clone https://github.com/molovo/zunit
-    cd zunit
-    ./build.zsh
-    cp zunit /usr/local/bin
-    ```
+  section
+    :marked
+      ### Installing Manually
+
+      First, install [revolver](https://github.com/molovo/revolver) and [color](https://github.com/molovo/color).
+
+  feature
+    :marked
+      ```bash
+
+
+      curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
+      curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
+      ```
+
+  section
+    :marked
+      Then, clone the ZUnit source code and build the executable.
+
+  feature
+    :marked
+      ```bash
+      git clone https://github.com/molovo/zunit
+      cd zunit
+      ./build.zsh
+      cp zunit /usr/local/bin
+      ```

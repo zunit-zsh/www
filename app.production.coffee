@@ -13,6 +13,12 @@ marked          = require 'marked'
 moment          = require 'moment'
 highlight       = require 'highlight.js'
 
+lang = highlight.getLanguage 'bash'
+lang.keywords.keyword += ' assert run load'
+lang.contains.push {className: 'hook', begin: '@\\w+'}
+lang.contains.push {className: 'punctuation', begin: '[\\\'\\\"\\{\\}\\(\\)\\`]'}
+highlight.registerLanguage 'zunit', () -> lang
+
 marked.setOptions
   gfm: true
   tables: true
@@ -21,8 +27,8 @@ marked.setOptions
   sanitize: true
   smartLists: true
   smartypants: true
-  highlight: (code) ->
-    highlight.highlightAuto(code).value
+  highlight: (code, lang) ->
+    highlight.highlightAuto(code, [lang]).value
 
 dateFormat.extendPrototype()
 

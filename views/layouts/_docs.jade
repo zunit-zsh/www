@@ -1,10 +1,11 @@
 extends /layout
 
+block vars
+  - var bodyClass = 'page--docs'
+
 block content
-  section.docs
-    include /includes/docs/_sidebar
+  main.docs
+    h1= post.title
 
     article.docs--content
-      h1= post.title
-
       block docs-content
