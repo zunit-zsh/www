@@ -44,6 +44,7 @@ module.exports =
     'Gemfile.lock'
     'vendor/**/*'
     '.bundle/**/*'
+    '.editorconfig'
   ]
 
   browser:

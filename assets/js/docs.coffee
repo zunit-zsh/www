@@ -8,12 +8,54 @@ require 'isomorphic-fetch'
 ###
 module.exports = class Docs
   ###*
+   * A map of key codes
+   *
+   * @type {object}
+  ###
+  keyCodes =
+    ESC: 27
+
+  ###*
+   * The documentation link in the main menu
+   *
+   * @type {HTMLElement}
+  ###
+  menuItem = document.querySelector '.nav--main-docs-link'
+
+  ###*
+   * The navigation pane containing the documentation menu
+   *
+   * @type {HTMLElement}
+  ###
+  menuPane = document.querySelector '.nav--docs'
+
+  ###*
    * Start your engines!
    *
    * @return {Docs}
   ###
   constructor: () ->
+    @registerNavListeners()
     @renderNav()
+
+  ###*
+   * Register listeners for opening and closing the documentation navigation
+  ###
+  registerNavListeners: () ->
+    menuItem.addEventListener 'click', (evt) ->
+      evt.preventDefault()
+
+      if document.body.classList.contains 'docs--open'
+        document.body.classList.remove 'docs--open'
+      else
+        document.body.classList.add 'docs--open'
+
+    document.addEventListener 'keydown', (evt) ->
+      key = evt.keyCode or evt.which
+      open = document.body.classList.contains 'docs--open'
+
+      if open and key is keyCodes.ESC
+        document.body.classList.remove 'docs--open'
 
   ###*
    * Renders the navigation in the sidebar
@@ -28,7 +70,7 @@ module.exports = class Docs
           do (key) ->
             console.log key
             # Find the list to put navigation items in
-            list = document.querySelector ".docs--sidebar-nav-#{key}"
+            list = document.querySelector ".nav--docs-#{key}"
             if not list? or not docs[key]?
               return
 

@@ -1,22 +1,94 @@
 .nav--main
   align-items: center
+  background: #fff
   display: flex
   justify-content: flex-end
-  padding: $baseline #{4 * $baseline}
+  padding: 0 #{4 * $baseline}
+  position: fixed
+  top: 0
+  transition: background-color .25s
+  width: 100%
+  z-index: 999
 
   a
     color: $color-black
     margin-left: $baseline
+    transition: color .25s, padding .25s
+    padding: #{2 * $baseline} 0
 
     &:first-child
       margin-left: 0
 
   &-logo
     flex: 1 1 100%
+    z-index: 999
 
     strong
       font-size: 1.5em
       line-height: #{(1 / 1.5) * $baseline}
+      top: #{(-.5 / 1.5) * $baseline}
+
+    span
+      left: #{-2.425 * $baseline}
+      top: #{.5 * $baseline}
 
     strong, span
-      display: block
+      display: inline-block
+      position: relative
+      transition: top .25s, left .25s, margin-right .25s, font-size .25s, line-height .25s
+
+  .scrolled &
+    background-color: $color-red
+    -webkit-font-smoothing: antialiased
+    font-smoothing: antialiased
+
+    a
+      color: #fff
+      padding: #{.5 * $baseline} 0
+
+    &-logo
+      strong
+        font-size: inherit
+        line-height: inherit
+        margin-right: 1ch
+        top: 0
+
+      span
+        left: 0
+        top: 0
+
+.nav--docs
+  background: $color-white
+  border-bottom: 1px solid rgba($color-black, .1)
+  display: flex
+  left: 0
+  opacity: 0
+  padding: #{.5 * $baseline} #{4 * $baseline}
+  pointer-events: none
+  position: fixed
+  top: #{4 * $baseline}
+  transition: top .25s, background-color .25s, color .25s, opacity .25s
+  width: 100%
+  z-index: 999
+
+  & + *
+    margin-top: 9em
+
+  > div
+    flex: 0 0 25%
+
+  .docs--open &
+    opacity: 1
+    pointer-events: auto
+
+  a
+    padding: 0 !important
+
+  .scrolled &
+    background: $color-red
+    border-bottom: 0
+    color: $color-white
+    top: #{2 * $baseline}
+
+    a
+      color: $color-white
