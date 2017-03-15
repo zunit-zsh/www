@@ -1,4 +1,5 @@
 .docs
+  background: $color-white
   padding: 6em
 
   &--sidebar
@@ -10,25 +11,31 @@
     flex-wrap: wrap
 
     > section, > feature
-      flex: 0 0 50%
-      width: 50%
+      flex: 0 0 100%
+      width: 100%
 
-    > section
-      padding-right: $baseline
+    @media (min-width: 64em)
+      > section, > feature
+        flex: 0 0 50%
+        width: 50%
+
+      > section
+        padding-right: $baseline
 
     > feature
       background: $color-black
       box-sizing: border-box
-      // margin-right: #{-4 * $baseline}
-      margin-top: #{-1 * $baseline}
       padding: $baseline
-      // padding: $baseline #{4 * $baseline} $baseline 0
+      margin: 0 0 $baseline
 
-      &.bump
-        margin-bottom: $baseline
+      @media (min-width: 64em)
+        margin-top: #{-1 * $baseline}
 
-      &:first-of-type
-        position: relative
+        &.bump
+          padding-top: #{3 * $baseline}
+
+        &:first-of-type
+          position: relative
 
         &::before
           background: $color-black
@@ -43,5 +50,6 @@
       pre
         border: 0
         max-width: 100%
+        margin: 0
         overflow-x: auto
         padding: 0

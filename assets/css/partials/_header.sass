@@ -1,20 +1,22 @@
 .nav--main
+  -webkit-font-smoothing: antialiased
   align-items: center
-  background: #fff
+  background-color: $color-red
   display: flex
+  font-smoothing: antialiased
   justify-content: flex-end
   padding: 0 #{4 * $baseline}
   position: fixed
   top: 0
-  transition: background-color .25s
   width: 100%
   z-index: 999
 
   a
-    color: $color-black
+    color: #fff
     margin-left: $baseline
-    transition: color .25s, padding .25s
+    transition: padding .25s
     padding: #{2 * $baseline} 0
+    will-change: padding
 
     &:first-child
       margin-left: 0
@@ -39,15 +41,8 @@
     strong, span
       display: inline-block
       position: relative
-      transition: top .25s, left .25s, margin-right .25s, font-size .25s, line-height .25s
-
-  .scrolled &, .page--docs &
-    background-color: $color-red
-    -webkit-font-smoothing: antialiased
-    font-smoothing: antialiased
-
-    a
-      color: #fff
+      transition: font-size .25s, left .25s, line-height .25s, margin-right .25s, top .25s
+      will-change: font-size, left, line-height, margin-right, top
 
   .scrolled &
     a
@@ -65,8 +60,9 @@
         top: 0
 
 .nav--docs
-  background: $color-white
+  background: $color-red
   border-bottom: 1px solid rgba($color-black, .1)
+  color: $color-white
   display: flex
   left: 0
   opacity: 0
@@ -74,8 +70,9 @@
   pointer-events: none
   position: fixed
   top: #{4.5 * $baseline}
-  transition: top .25s, background-color .25s, color .25s, opacity .25s
+  transition: opacity .25s, top .25s
   width: 100%
+  will-change: opacity, top
   z-index: 999
 
   & + *
@@ -94,9 +91,6 @@
 
   a
     padding: 0 !important
-
-  .scrolled &, .page--docs &
-    background: $color-red
     color: $color-white
 
     a

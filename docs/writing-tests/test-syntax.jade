@@ -34,11 +34,9 @@ block docs-content
 
       By default, tests which do not contain any assertions will be marked as risky, and result in an overall failure of the test run. You can disable this functionality by passing ZUnit the `--allow-risky` option.
 
-  feature
+  feature.bump
     :marked
       ```zunit
-
-
       #!/usr/bin/env zunit
 
       @test 'Testing assertions' {
@@ -55,8 +53,6 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-
-
       ### In my-script.zsh:
       export testing='Tada!'
 
@@ -89,43 +85,23 @@ block docs-content
 
       You can run commands within your tests using the `run` helper. Doing this stops a failing command from ending your test early, and allows you to make assertions on its exit status and output.
 
-  feature
+      The command's exit code is stored in the `$state` variable.
+
+      The full output of the command is stored in `$output`.
+
+      Each line of the output is also stored in the `$lines` array, allowing you to run assertions against individual lines.
+
+  feature.bump
     :marked
       ```zunit
-
-
       @test 'Test command output' {
         # Run the command, including arguments
         run ls ~/my-dir
-      ```
 
-  section
-    :marked
-      The command's exit code is stored in the `$state` variable.
-
-  feature
-    :marked
-      ```zunit
         assert $state equals 0
-      ```
 
-  section
-    :marked
-      The full output of the command is stored in `$output`.
-
-  feature
-    :marked
-      ```zunit
         assert "$output" is_not_empty
-      ```
 
-  section
-    :marked
-      Each line of the output is also stored in the `$lines` array, allowing you to run assertions against individual lines.
-
-  feature
-    :marked
-      ```zunit
         assert "${lines[3]}" equals 'my-third-file'
       }
       ```

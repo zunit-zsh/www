@@ -6,10 +6,171 @@ seq: 1
 extends /layouts/_docs
 
 block docs-content
-  :marked
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  section
+    :marked
+      ZUnit's powerful assertion library provides a series of methods enabling you to compare values within your tests. Here is a full list of all the methods available to you.
+
+  feature
+
+  section
+    :marked
+      ### equals
+
+      Compares two integers to ensure that they are equal, and fails the test if they are not.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 1 equals 1
+
+      # Fails
+      assert 1 equals 0
+      ```
+
+  section
+    :marked
+      ### not_equal_to
+
+      Compares two integers to ensure that they are not equal, and fails the test if they are.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 1 not_equal_to 0
+
+      # Fails
+      assert 1 not_equal_to 1
+      ```
+
+  section
+    :marked
+      ### same_as
+
+      Compares two strings to ensure that they are equal, and fails the test if they are not
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 'Rainbows!' same_as 'Rainbows!'
+
+      # Fails
+      assert 'Rainbows' same_as 'Unicorns!'
+      ```
+
+  section
+    :marked
+      ### different_to
+
+      Compares two strings to ensure that they are different, and fails the test if they are not
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 'Rainbows' different_to 'Unicorns!'
+
+      # Fails
+      assert 'Rainbows!' different_to 'Rainbows!'
+      ```
+
+  section
+    :marked
+      ### is_empty
+
+      Checks that the value passed is empty or undefined, and fails the test if it contains a value.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert '' is_empty
+      assert "$undefined" is_empty
+
+      # Fails
+      assert 'Rainbows!' is_empty
+      ```
+
+  section
+    :marked
+      ### is_not_empty
+
+      Checks that the value passed contains something, and fails the test if it is empty or undefined.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 'Rainbows!' is_not_empty
+
+      # Fails
+      assert '' is_not_empty
+      assert "$undefined" is_not_empty
+      ```
+
+  section
+    :marked
+      ### matches
+
+      Compares the value against a PCRE-compliant regular expression, and fails the test if it does not match.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 'unicorns' matches '[a-z]{8}'
+
+      # Fails
+      assert 'unicorns' matches '[0-9]+'
+      ```
+
+
+  section
+    :marked
+      ### does_not_match
+
+      Compares the value against a PCRE-compliant regular expression, and fails the test if it matches.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 'unicorns' does_not_match '[0-9]+'
+
+      # Fails
+      assert 'unicorns' does_not_match '[a-z]{8}'
+      ```
+
+  section
+    :marked
+      ### in
+
+      Search for the value in a list or array of values, and fails the test if it is not found.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 'a' in 'a' 'b' 'c'
+
+      # Fails
+      assert 'a' in 'x' 'y' 'z'
+      ```
+
+  section
+    :marked
+      ### not_in
+
+      Search for the value in a list or array of values, and fails the test if it is found.
+
+  feature.bump
+    :marked
+      ```zunit
+      # Passes
+      assert 'a' not_in 'x' 'y' 'z'
+
+      # Fails
+      assert 'a' not_in 'a' 'b' 'c'
+      ```
