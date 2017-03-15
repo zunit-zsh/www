@@ -1,26 +1,45 @@
 .docs
   background: $color-white
-  padding: 6em
+  padding: #{4 * $baseline} $baseline
 
-  &--sidebar
-    flex: 0 0 18em
+  @media (min-width: 32em)
+    padding: #{4 * $baseline} #{2 * $baseline}
+
+  @media (min-width: 42em)
+    padding: #{4 * $baseline} 0
 
   &--content
     align-content: stretch
     display: flex
     flex-wrap: wrap
 
+    @media (min-width: 42em)
+      padding-left: #{2 * $baseline}
+
+    @media (min-width: 64em)
+      padding-left: #{4 * $baseline}
+
+    > h1:first-child
+      flex: 0 0 100%
+
     > section, > feature
       flex: 0 0 100%
       width: 100%
+
+    @media (min-width: 42em)
+      > section
+        flex: 0 0 60%
+        padding-right: #{2 * $baseline}
+        width: 60%
+
+      > feature
+        flex: 0 0 40%
+        width: 40%
 
     @media (min-width: 64em)
       > section, > feature
         flex: 0 0 50%
         width: 50%
-
-      > section
-        padding-right: $baseline
 
     > feature
       background: $color-black
@@ -28,7 +47,7 @@
       padding: $baseline
       margin: 0 0 $baseline
 
-      @media (min-width: 64em)
+      @media (min-width: 42em)
         margin-top: #{-1 * $baseline}
 
         &.bump

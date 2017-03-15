@@ -1,51 +1,111 @@
 .nav--main
   -webkit-font-smoothing: antialiased
   align-items: center
-  background-color: $color-red
+  background: $color-red
+  background: linear-gradient(to bottom right, $color-pink, $color-red)
   display: flex
+  flex-wrap: wrap
   font-smoothing: antialiased
-  justify-content: flex-end
-  padding: 0 #{4 * $baseline}
+  justify-content: space-between
   position: fixed
   top: 0
   width: 100%
   z-index: 999
+  padding: 0 $baseline
+
+  @media (min-width: 32em)
+    padding: 0 #{2 * $baseline}
+
+  @media (min-width: 50em)
+    & + *
+      margin-top: 6em
+
+  @media (min-width: 64em)
+    padding: 0 #{4 * $baseline}
+
 
   a
     color: #fff
-    margin-left: $baseline
-    transition: padding .25s
-    padding: #{2 * $baseline} 0
-    will-change: padding
 
-    &:first-child
-      margin-left: 0
+  &-mobile-nav-link
+    display: inline
+    padding: #{.5 * $baseline} 0
+
+
+    @media (min-width: 50em)
+      display: none
 
   &-install-version
     font-weight: 700
     margin-left: .5ch
 
+  &-logo,
+  &-links
+    height: auto
+    transition: padding .25s
+    will-change: padding
+
+    @media (min-width: 50em)
+      padding: #{2 * $baseline} 0
+
+  &-links
+    display: none
+
+    a:not(:first-of-type)
+      margin-left: $baseline
+
+    .docs--open &
+      padding: #{.5 * $baseline} 0
+
+    @media (min-width: 50em)
+      display: block
+
+    @media (max-width: 50em)
+      flex: 0 0 100%
+
+      .menu--open &
+        // display: block
+
   &-logo
-    flex: 1 1 100%
-    z-index: 999
+    flex: 1 1 50%
+
+    .docs--open &
+      padding: #{2 * $baseline} 0
+
+    @media (max-width: 50em)
+      .docs--open &
+        padding-right: 3em
 
     strong
+      display: inline-block
       font-size: 1.5em
       line-height: #{(1 / 1.5) * $baseline}
       top: #{(-.5 / 1.5) * $baseline}
 
     span
-      left: #{-2.425 * $baseline}
-      top: #{.5 * $baseline}
+      @media (max-width: 32em)
+        display: none
+
+        .docs--open &
+          display: block
+
+      @media (min-width: 50em)
+        display: inline-block
+        left: #{-2.425 * $baseline}
+        top: #{.5 * $baseline}
+
+        .scrolled:not(.docs--open) &
+          left: 0
+          top: 0
 
     strong, span
-      display: inline-block
       position: relative
       transition: font-size .25s, left .25s, line-height .25s, margin-right .25s, top .25s
       will-change: font-size, left, line-height, margin-right, top
 
-  .scrolled &
-    a
+  .scrolled:not(.docs--open) &
+    &-logo,
+    &-links
       padding: #{.5 * $baseline} 0
 
     &-logo
@@ -55,35 +115,37 @@
         margin-right: 1ch
         top: 0
 
-      span
-        left: 0
+  @media (max-width: 50em)
+    &-logo
+      strong
+        font-size: inherit
+        line-height: inherit
+        margin-right: 1ch
         top: 0
 
 .nav--docs
-  background: $color-red
-  border-bottom: 1px solid rgba($color-black, .1)
   color: $color-white
   display: flex
-  left: 0
+  flex: 0 0 100%
+  flex-wrap: wrap
+  height: 0
   opacity: 0
-  padding: #{.5 * $baseline} #{4 * $baseline}
-  pointer-events: none
-  position: fixed
-  top: #{4.5 * $baseline}
-  transition: opacity .25s, top .25s
+  overflow: hidden
+  padding: 0
+  position: relative
+  top: #{-1 * $baseline}
+  transition: height .25s, opacity .25s, padding .25s, top .25s
   width: 100%
-  will-change: opacity, top
-  z-index: 999
-
-  & + *
-    margin-top: 9em
+  will-change: height, opacity, padding, top
 
   > div
-    flex: 0 0 25%
+    flex: 0 0 100%
 
-  .docs--open &
-    opacity: 1
-    pointer-events: auto
+    @media (min-width: 32em)
+      flex: 0 0 50%
+
+    @media (min-width: 54em)
+      flex: 0 0 25%
 
   ul
     list-style: none
@@ -96,6 +158,17 @@
     a
       color: $color-white
 
-  .scrolled &
-    border-bottom: 0
-    top: calc(#{2 * $baseline} - 1px)
+  .docs--open &
+    height: calc(100vh - 10.5em)
+    opacity: 1
+    overflow: auto
+    padding: 0 0 #{.5 * $baseline}
+    top: 0
+
+    @media (min-width: 32em)
+      height: 18.75em
+      overflow: hidden
+
+    @media (min-width: 54em)
+      height: 9.75em
+      overflow: hidden

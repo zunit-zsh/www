@@ -5,14 +5,49 @@
 ###
 class Header
   ###*
+   * A map of key codes
+   *
+   * @type {object}
+  ###
+  keyCodes =
+    ESC: 27
+
+  ###*
+   * The documentation link in the main menu
+   *
+   * @type {HTMLElement}
+  ###
+  toggle = document.querySelector '.nav--main-mobile-nav-link'
+
+  ###*
    * Create the Header instance
    *
    * @return {Header}
   ###
   constructor: () ->
     @header = document.querySelector '.nav'
+    @registerNavListeners()
     @registerHeaderScrollingListener()
     @updateVersion()
+
+  ###*
+   * Register listeners for opening and closing the documentation navigation
+  ###
+  registerNavListeners: () ->
+    toggle.addEventListener 'click', (evt) ->
+      evt.preventDefault()
+
+      if document.body.classList.contains 'menu--open'
+        document.body.classList.remove 'menu--open'
+      else
+        document.body.classList.add 'menu--open'
+
+    document.addEventListener 'keydown', (evt) ->
+      key = evt.keyCode or evt.which
+      open = document.body.classList.contains 'menu--open'
+
+      if open and key is keyCodes.ESC
+        document.body.classList.remove 'menu--open'
 
   ###*
    * Register a listener which fires on scroll events

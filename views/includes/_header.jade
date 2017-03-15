@@ -1,30 +1,35 @@
 nav.nav--main
-  a(href='/' class='nav--main-logo')
-    strong ZUnit
-    span A powerful testing framework for ZSH projects
+  .nav--main-logo
+    a(href='/')
+      strong ZUnit
+      span A powerful testing framework for ZSH projects
 
-  a(href='/docs/getting-started/installation') Install
-    span.nav--main-install-version
-  a.nav--main-docs-link(href='/docs') Documentation
-  a(href='https://github.com/molovo/zunit') Github
+  .nav--main-mobile-nav-link
+    a(href='javascript:void()') &#9776;
 
-nav.nav--docs
-  div
-    h4 Getting Started
+  .nav--main-links
+    a(href='/docs/getting-started/installation') Install
+      span.nav--main-install-version
+    a.nav--main-docs-link(href='/docs') Documentation
+    a(href='https://github.com/molovo/zunit') Github
 
-    ul.nav--docs-getting-started
+  nav.nav--docs
+    div
+      h4 Getting Started
 
-  div
-    h4 Configuration
+      ul.nav--docs-getting-started
 
-    ul.nav--docs-configuration
+    div
+      h4 Configuration
 
-  div
-    h4 Writing Tests
+      ul.nav--docs-configuration
 
-    ul.nav--docs-writing-tests
+    div
+      h4 Writing Tests
 
-  div
-    h4 Command Line Usage
+      ul.nav--docs-writing-tests
 
-    ul.nav--docs-command-line-usage
+    div
+      h4 Command Line Usage
+
+      ul.nav--docs-command-line-usage

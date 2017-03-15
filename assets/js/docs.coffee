@@ -23,6 +23,13 @@ module.exports = class Docs
   menuItem = document.querySelector '.nav--main-docs-link'
 
   ###*
+   * The documentation link in the main menu
+   *
+   * @type {HTMLElement}
+  ###
+  navToggle = document.querySelector '.nav--main-mobile-nav-link'
+
+  ###*
    * The navigation pane containing the documentation menu
    *
    * @type {HTMLElement}
@@ -42,13 +49,16 @@ module.exports = class Docs
    * Register listeners for opening and closing the documentation navigation
   ###
   registerNavListeners: () ->
-    menuItem.addEventListener 'click', (evt) ->
+    listener = (evt) ->
       evt.preventDefault()
 
       if document.body.classList.contains 'docs--open'
         document.body.classList.remove 'docs--open'
       else
         document.body.classList.add 'docs--open'
+
+    menuItem.addEventListener 'click', listener
+    navToggle.addEventListener 'click', listener
 
     document.addEventListener 'keydown', (evt) ->
       key = evt.keyCode or evt.which
