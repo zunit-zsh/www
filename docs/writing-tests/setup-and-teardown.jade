@@ -6,10 +6,36 @@ seq: 2
 extends /layouts/_docs
 
 block docs-content
-  :marked
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  section
+    :marked
+      ZUnit allows you to specify @setup and @teardown functions within your test files, which will be run before and after each test in the file.
+
+  feature
+
+  section
+    :marked
+      ### @setup
+
+      The `@setup` method is run before each test, and can be used to set environment variables, define functions, or load scripts.
+
+  feature.bump
+    :marked
+      ```zunit
+      @setup {
+        load some-setup-script
+      }
+      ```
+
+  section
+    :marked
+      ### @setup
+
+      The `@teardown` method is run after each test, and can be used to clean up the environment after a test has finished running.
+
+  feature
+    :marked
+      ```zunit
+      @teardown {
+        rm some-generated-file
+      }
+      ```

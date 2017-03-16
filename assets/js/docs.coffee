@@ -80,37 +80,39 @@ module.exports = class Docs
           do (key) ->
             console.log key
             # Find the list to put navigation items in
-            list = document.querySelector ".nav--docs-#{key}"
-            if not list? or not docs[key]?
-              return
+            lists = document.querySelectorAll ".nav--docs-#{key}"
+            for list in lists
+              do (list) ->
+                if not list? or not docs[key]?
+                  return
 
-            # Sort the items by sequence, then alphabetically
-            docs[key].items.sort (a, b) ->
-              if a.seq?
-                return (a.seq - b.seq)
+                # Sort the items by sequence, then alphabetically
+                docs[key].items.sort (a, b) ->
+                  if a.seq?
+                    return (a.seq - b.seq)
 
-              return -1 if a.title < b.title
-              return 1 if a.title > b.title
-              return 0
+                  return -1 if a.title < b.title
+                  return 1 if a.title > b.title
+                  return 0
 
-            # Loop through each of the documentation items
-            for item in docs[key].items
-              do (item) ->
-                # Create a list element and a link
-                li = document.createElement 'li'
-                a  = document.createElement 'a'
+                # Loop through each of the documentation items
+                for item in docs[key].items
+                  do (item) ->
+                    # Create a list element and a link
+                    li = document.createElement 'li'
+                    a  = document.createElement 'a'
 
-                # Populate the URL and title
-                a.href      = item._url
-                a.innerHTML = item.title
+                    # Populate the URL and title
+                    a.href      = item._url
+                    a.innerHTML = item.title
 
-                # Add a class of active for the current URL
-                if "#{item._url}/" is window.location.pathname
-                  a.classList.add 'active'
+                    # Add a class of active for the current URL
+                    if "#{item._url}/" is window.location.pathname
+                      a.classList.add 'active'
 
-                # Add the item to the list
-                li.appendChild a
-                list.appendChild li
+                    # Add the item to the list
+                    li.appendChild a
+                    list.appendChild li
 
   ###*
    * Retrieve the package index JSON, and cache it
