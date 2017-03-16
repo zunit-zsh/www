@@ -1,10 +1,21 @@
 .intro
-  padding: #{$baseline * 4}
+  padding: #{4 * $baseline} $baseline
+
+  @media (min-width: 32em)
+    padding: #{4 * $baseline} #{2 * $baseline}
+
+  @media (min-width: 42em)
+    padding: #{4 * $baseline} 0
 
   h1
-    font:
-      weight: 300
+    font-weight: 300
     text-align: center
+
+    @media (max-width: 32em)
+      font-size: 1.5em
+
+    @media (min-width: 48em)
+      padding: 0 #{2 * $baseline}
 
   pre
     margin: 3em auto

@@ -1,7 +1,14 @@
 .code-window
+
+  @media (max-width: 32em)
+    font-size: .75em
+    line-height: $baseline
+
   pre
     background: $color-black
     border-radius: .25em
+    max-width: 100%
+    overflow-x: auto
     padding: #{$baseline * 2} $baseline $baseline #{$baseline * 3}
     position: relative
 
