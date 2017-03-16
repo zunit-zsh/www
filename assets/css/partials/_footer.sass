@@ -1,0 +1,36 @@
+.bottom
+  align-items: center
+  background: $color-white
+  color: $color-black
+  display: flex
+  justify-content: space-between
+  padding: #{4 * $baseline}
+  position: relative
+
+  &::after
+    background-image: linear-gradient(to right, $color-pink, $color-red)
+    content: ''
+    height: .25em
+    position: absolute
+    bottom: 100%
+    left: 0
+    width: 100%
+
+  &--copyright
+    text-align: right
+
+.molovo
+  &--logo
+    width: 3em
+
+    &_frame
+      fill: $color-molovo-red
+
+    &_lens-left,
+    &_lens-right
+      fill: transparent
+
+    &:hover
+      .molovo--logo_lens-left,
+      .molovo--logo_lens-right
+        fill: rgba($color-black, .3)

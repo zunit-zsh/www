@@ -57,14 +57,26 @@
         &:first-of-type
           position: relative
 
-        &::before
-          background: $color-black
-          bottom: calc(100% - 1px)
-          content: ''
-          height: 100vh
-          left: 0
-          position: absolute
-          right: 0
+          &::before
+            background: $color-black
+            bottom: calc(100% - 1px)
+            content: ''
+            height: 100vh
+            left: 0
+            position: absolute
+            right: 0
+
+        &:last-of-type
+          position: relative
+
+          &::after
+            background: $color-black
+            content: ''
+            height: #{5 * $baseline}
+            left: 0
+            position: absolute
+            right: 0
+            top: 100%
 
 
       pre
