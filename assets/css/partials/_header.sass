@@ -1,17 +1,16 @@
 .nav--main
   -webkit-font-smoothing: antialiased
   align-items: center
-  background: $color-red
   background: linear-gradient(to bottom right, $color-pink, $color-red)
   display: flex
   flex-wrap: wrap
   font-smoothing: antialiased
   justify-content: space-between
+  padding: 0 $baseline
   position: fixed
   top: 0
   width: 100%
   z-index: 999
-  padding: 0 $baseline
 
   @media (min-width: 32em)
     padding: 0 #{2 * $baseline}
@@ -25,7 +24,7 @@
 
 
   a
-    color: #fff
+    color: $color-white
 
   &-mobile-nav-link
     display: inline
@@ -51,8 +50,9 @@
   &-links
     display: none
 
-    a:not(:first-of-type)
-      margin-left: $baseline
+    a
+      &:not(:first-of-type)
+        margin-left: $baseline
 
     .docs--open &
       padding: #{.5 * $baseline} 0
@@ -62,9 +62,6 @@
 
     @media (max-width: 50em)
       flex: 0 0 100%
-
-      .menu--open &
-        // display: block
 
   &-logo
     flex: 1 1 50%
@@ -152,8 +149,8 @@
     margin: 0 0 $baseline
 
   a
-    padding: 0 !important
     color: $color-white
+    padding: 0 !important
 
     a
       color: $color-white

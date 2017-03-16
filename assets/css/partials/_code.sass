@@ -13,13 +13,13 @@
     position: relative
 
     &::before
-      background: url(/img/browser-buttons.svg) left center / contain no-repeat
+      background: url('/img/browser-buttons.svg') left center / contain no-repeat
       content: 'my-app.zunit'
-      position: absolute
-      top: .25em
       left: .75em
+      position: absolute
       right: .75em
       text-align: center
+      top: .25em
 
     code
       line-height: $baseline
@@ -32,7 +32,7 @@
         position: absolute
         top: #{$baseline * 2}
 
-pre.code-window, .docs-content > feature > pre
+.code-window, .docs-content > feature > pre
   .keyword, .command
     color: $color-blue-two
 
@@ -78,8 +78,8 @@ pre.code-window, .docs-content > feature > pre
   color: $color-green-one
 
 .hljs-string
-  &:first-letter,
-  &:last-letter
+  &::first-letter,
+  &::last-letter
     color: $color-blue-three
 
 .hljs-selector-id,
@@ -116,12 +116,6 @@ pre.code-window, .docs-content > feature > pre
 .hljs-built_in,
 .hljs-builtin-name
   color: $color-blue-two
-
-.hljs-deletion
-  background: #fdd
-
-.hljs-addition
-  background: #dfd
 
 .hljs-emphasis
   font-style: italic
