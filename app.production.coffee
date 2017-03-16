@@ -69,7 +69,7 @@ module.exports =
     )
     js_pipeline(files: 'assets/js/**/*.{js,coffee}')
     css_pipeline(files: 'assets/css/main.sass', postcss: true)
-    dynamic_content()
+    dynamic_content(write: 'docs.json')
     statica()
     browserify(
       files: 'assets/js/main.coffee'
