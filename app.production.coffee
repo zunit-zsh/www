@@ -53,6 +53,8 @@ module.exports =
     '.editorconfig'
   ]
 
+  output: 'public/zunit'
+
   browser:
     open: false
 
