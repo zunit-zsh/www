@@ -21,11 +21,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 1 equals 1
-
-      # Fails
-      assert 1 equals 0
       ```
 
   section
@@ -37,11 +33,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 1 not_equal_to 0
-
-      # Fails
-      assert 1 not_equal_to 1
       ```
 
   section
@@ -53,11 +45,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 'Rainbows!' same_as 'Rainbows!'
-
-      # Fails
-      assert 'Rainbows' same_as 'Unicorns!'
       ```
 
   section
@@ -69,11 +57,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 'Rainbows' different_to 'Unicorns!'
-
-      # Fails
-      assert 'Rainbows!' different_to 'Rainbows!'
       ```
 
   section
@@ -85,12 +69,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert '' is_empty
-      assert "$undefined" is_empty
-
-      # Fails
-      assert 'Rainbows!' is_empty
       ```
 
   section
@@ -102,12 +81,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 'Rainbows!' is_not_empty
-
-      # Fails
-      assert '' is_not_empty
-      assert "$undefined" is_not_empty
       ```
 
   section
@@ -119,11 +93,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 'unicorns' matches '[a-z]{8}'
-
-      # Fails
-      assert 'unicorns' matches '[0-9]+'
       ```
 
 
@@ -136,11 +106,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 'unicorns' does_not_match '[0-9]+'
-
-      # Fails
-      assert 'unicorns' does_not_match '[a-z]{8}'
       ```
 
   section
@@ -152,11 +118,7 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 'a' in 'a' 'b' 'c'
-
-      # Fails
-      assert 'a' in 'x' 'y' 'z'
       ```
 
   section
@@ -168,9 +130,157 @@ block docs-content
   feature.bump
     :marked
       ```zunit
-      # Passes
       assert 'a' not_in 'x' 'y' 'z'
+      ```
 
-      # Fails
-      assert 'a' not_in 'a' 'b' 'c'
+  section
+    :marked
+      ### is_key_in
+
+      Searches for the value within the keys of the provided hash, and fails the test if it is not found.
+
+  feature.bump
+    :marked
+      ```zunit
+      typeset -A hash; hash=(
+        'a' 1
+        'b' 2
+        'c' 3
+      )
+      assert 'a' is_key_in ${(@kv)hash}
+      ```
+
+  section
+    :marked
+      ### is_not_key_in
+
+      Searches for the value within the keys of the provided hash, and fails the test if it is found.
+
+  feature.bump
+    :marked
+      ```zunit
+      typeset -A hash; hash=(
+        'x' 1
+        'y' 2
+        'z' 3
+      )
+      assert 'a' is_not_key_in ${(@kv)hash}
+      ```
+
+  section
+    :marked
+      ### is_value_in
+
+      Searches for the value within the values of the provided hash, and fails the test if it is not found.
+
+  feature.bump
+    :marked
+      ```zunit
+      typeset -A hash; hash=(
+        'a' 1
+        'b' 2
+        'c' 3
+      )
+      assert 1 is_value_in ${(@kv)hash}
+      ```
+
+  section
+    :marked
+      ### is_not_value_in
+
+      Searches for the value within the values of the provided hash, and fails the test if it is found.
+
+  feature.bump
+    :marked
+      ```zunit
+      typeset -A hash; hash=(
+        'x' 1
+        'y' 2
+        'z' 3
+      )
+      assert 4 is_not_value_in ${(@kv)hash}
+      ```
+
+  section
+    :marked
+      ### exists
+
+      Searches the filesystem for the given path, and fails the test if it does not exist.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert /path/to/a/file exists
+      ```
+
+  section
+    :marked
+      ### is_file
+
+      Searches the filesystem for the given path, and fails the test if it does not exist, or is not a file.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert /path/to/a/file is_file
+      ```
+
+  section
+    :marked
+      ### is_dir
+
+      Searches the filesystem for the given path, and fails the test if it does not exist, or is not a directory.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert /path/to/a/directory is_dir
+      ```
+
+  section
+    :marked
+      ### is_link
+
+      Searches the filesystem for the given path, and fails the test if it does not exist, or is not a symbolic link.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert /path/to/a/symlink is_link
+      ```
+
+  section
+    :marked
+      ### is_readable
+
+      Searches the filesystem for the given path, and fails the test if it does not exist, or is not readable.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert /path/to/a/file is_readable
+      ```
+
+  section
+    :marked
+      ### is_writable
+
+      Searches the filesystem for the given path, and fails the test if it does not exist, or is not writable.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert /path/to/a/file is_writable
+      ```
+
+  section
+    :marked
+      ### is_executable
+
+      Searches the filesystem for the given path, and fails the test if it does not exist, or is not executable.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert /path/to/a/file is_executable
       ```

@@ -1,0 +1,94 @@
+---
+title: Running Tests
+seq: 1
+---
+
+extends /layouts/_docs
+
+block docs-content
+  section
+    :marked
+      Tests can be run by running `zunit` or `zunit run` in your project's root directory.
+
+  feature
+    :marked
+      ```bash
+      # Run all tests in the tests directory
+      # The following are synonymous
+      zunit
+      zunit run
+      ```
+
+  section
+    :marked
+      ### Specifying Tests to Run
+
+      To run specific test files, you can pass the filename directly to ZUnit. You can run multiple files by passing a directory or glob.
+
+  feature.bump
+    :marked
+      ```bash
+      # Run all tests in test_file.zunit
+      zunit test_file.zunit
+
+      # Run all tests in the other tests directory
+      # The following are synonymous
+      zunit other_tests
+      zunit other_tests/**/*.zunit
+      ```
+
+  section
+    :marked
+      ### Running Individual Tests
+
+      To run a single test, use the syntax `filename@'name'`.
+
+  feature.bump
+    :marked
+      ```bash
+      zunit my_tests.zunit@'My first test'
+      ```
+
+  section
+    :marked
+      ### Options
+
+      You can change the way ZUnit runs your tests by passing the following CLI options.
+
+  feature
+
+  section
+    :marked
+      #### -\-fail-fast
+
+      By default, ZUnit will run all tests, and then report the full results at the end of the run. Passing the `--fail-fast` option halts test execution as soon as a failure, error or warning is encountered.
+
+  feature.bump
+    :marked
+      ```bash
+      zunit --fail-fast
+      ```
+
+  section
+    :marked
+      #### -\-allow-risky
+
+      By default, if a test does not contain any assertions, it will be marked with a warning, and the run will fail. You can disable this functionality by passing the `--allow-risky` option.
+
+  feature.bump
+    :marked
+      ```bash
+      zunit --allow-risky
+      ```
+
+  section
+    :marked
+      #### -\-tap
+
+      Passing the `--tap` option will disable ZUnit's progress spinner, and print results in a [TAP](http://testanything.org) compatible format.
+
+  feature.bump
+    :marked
+      ```bash
+      zunit --tap
+      ```
