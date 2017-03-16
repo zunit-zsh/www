@@ -90,6 +90,7 @@ module.exports =
     sourcemap: true
 
   locals:
+    baseUrl: '/'
     render: fs.readFileSync
     md: marked
     date: (date) ->

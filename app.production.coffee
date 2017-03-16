@@ -91,6 +91,7 @@ module.exports =
     sourcemap: true
 
   locals:
+    baseUrl: '/zunit/'
     render: fs.readFileSync
     md: marked
     date: (date) ->

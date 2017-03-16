@@ -1,6 +1,6 @@
 nav.nav--main
   .nav--main-logo
-    a(href='/')
+    a(href=baseUrl)
       strong ZUnit
       span A powerful testing framework for ZSH projects
 
@@ -8,9 +8,9 @@ nav.nav--main
     a(href='javascript:void()') &#9776;
 
   .nav--main-links
-    a(href='/docs/getting-started/installation') Install
+    a(href=baseUrl + 'docs/getting-started/installation') Install
       span.nav--main-install-version
-    a.nav--main-docs-link(href='/docs') Documentation
+    a.nav--main-docs-link(href=baseUrl + 'docs') Documentation
     a(href='https://github.com/molovo/zunit') Github
 
   nav.nav--docs
