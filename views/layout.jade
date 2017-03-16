@@ -13,10 +13,12 @@ html(lang="en")
     - var title = typeof post !== 'undefined' ? post.title + ' | ZUnit' : (title || _path)
     title= title
 
-    link(rel='icon' href=baseUrl + 'favicon.ico')
+    link(rel='icon' href=baseUrl + '/favicon.ico')
     link(rel='stylesheet' href='//brick.a.ssl.fastly.net/Source+Sans+Pro:300,400,700,400i/Source+Code+Pro:400,400i,700')
 
-    != css(baseUrl)
+    != css(baseUrl + '/')
+
+    script!= "window.baseUrl = '" + baseUrl + "';window.baseDomain = '" + baseDomain + "';"
 
     script!= 'window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};heap.load("3498724705");'
 
@@ -25,4 +27,4 @@ html(lang="en")
 
     block content
 
-    script(src=baseUrl + 'js/main.js')
+    script(src=baseUrl + '/js/main.js')

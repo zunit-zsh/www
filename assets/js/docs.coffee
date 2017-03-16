@@ -102,12 +102,14 @@ module.exports = class Docs
                     li = document.createElement 'li'
                     a  = document.createElement 'a'
 
+                    url = "#{window.baseUrl}#{item._url}"
+
                     # Populate the URL and title
-                    a.href      = item._url
+                    a.href      = url
                     a.innerHTML = item.title
 
                     # Add a class of active for the current URL
-                    if "#{item._url}/" is window.location.pathname
+                    if "#{url}" is window.location.pathname
                       a.classList.add 'active'
 
                     # Add the item to the list
@@ -135,7 +137,7 @@ module.exports = class Docs
         return
 
       # Fetch the list from the stored JSON file
-      fetch 'https://molovo.co/zunit/docs.json'
+      fetch "#{window.baseDomain}#{window.baseUrl}/docs.json"
         # Parse the JSON response
         .then (response) ->
           response.json()

@@ -91,7 +91,8 @@ module.exports =
     sourcemap: true
 
   locals:
-    baseUrl: '/zunit/'
+    baseUrl: '/zunit'
+    baseDomain: 'https://molovo.co'
     render: fs.readFileSync
     md: marked
     date: (date) ->
