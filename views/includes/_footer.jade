@@ -1,12 +1,34 @@
 footer.bottom
-  .molovo
-    a(href='//molovo.co')
-      include /icons/_molovo.svg
-    span
-      :marked
-        Made with ♥, by [molovo](//molovo.co)
+  .bottom--branding
+    a(href='/')
+      img(src='/img/logo-mark-white.svg' class='bottom--branding-logo' alt='ZUnit | A powerful testing framework for ZSH projects')
 
-  .bottom--copyright
-    a(href='https://heapanalytics.com/?utm_source=badge' rel="nofollow")
-      img(style='width:108px;height:41px' src='https://heapanalytics.com/img/badge.png' alt='Heap | Mobile and Web Analytics')
-    p &copy; 2017 James Dinsdale
+    :marked
+      &copy; 2017 [molovo](//molovo.co)
+
+
+
+  .bottom--docs
+    div
+      h4 Getting Started
+
+      ul.nav--docs-getting-started
+
+    div
+      h4 Configuration
+
+      ul.nav--docs-configuration
+
+    div
+      h4 Writing Tests
+
+      ul.nav--docs-writing-tests
+
+    div
+      h4 Command Line Usage
+
+      ul.nav--docs-command-line-usage
+
+    .bottom--docs-misc
+      a(href='https://heapanalytics.com/?utm_source=badge' rel="nofollow")
+        img(style='width:108px;height:41px' src='https://heapanalytics.com/img/badge.png' alt='Heap | Mobile and Web Analytics')

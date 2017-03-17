@@ -1,7 +1,8 @@
 .nav--main
   -webkit-font-smoothing: antialiased
   align-items: center
-  background-image: linear-gradient(to bottom right, $color-pink, $color-red)
+  background-image: linear-gradient(to bottom right, $color-purple-two, $color-purple)
+  box-shadow: 0 3px 5px rgba($color-black, .3)
   display: flex
   flex-wrap: wrap
   font-smoothing: antialiased
@@ -12,6 +13,55 @@
   width: 100%
   z-index: 999
 
+  &::before
+    background: url(/img/logo-mark.svg) right center / contain no-repeat
+    content: ''
+    left: 1.5em
+    height: 1em
+    position: absolute
+    transform: translateX(-100%) translateX(-.125em)
+    transition: height .25s, top .25s, width .25s
+    top: 1em
+    width: 1em
+
+    .docs--open &
+      top: 3.25em
+
+    @media (min-width: 32em)
+      height: 1.5em
+      left: 3em
+      top: .75em
+      transform: translateX(-100%) translateX(-.375em)
+      width: 1.5em
+
+      .docs--open &
+        top: 3em
+
+    @media (min-width: 50em)
+      height: 3em
+      top: 2.25em
+      width: 3em
+
+      .docs--open &
+        top: 2.25em
+
+      .scrolled:not(.docs--open) &
+        height: 1.5em
+        top: .75em
+        width: 1.5em
+
+    @media (min-width: 64em)
+      left: 6em
+
+  // &::after
+  //   background-image: linear-gradient(to right, $color-pink, $color-red)
+  //   content: ''
+  //   height: .75em
+  //   left: 0
+  //   position: absolute
+  //   top: 100%
+  //   width: 100%
+
   @media (min-width: 32em)
     padding: 0 #{2 * $baseline}
 
@@ -21,7 +71,6 @@
 
   @media (min-width: 64em)
     padding: 0 #{4 * $baseline}
-
 
   a
     color: $color-white
@@ -65,6 +114,9 @@
 
   &-logo
     flex: 1 1 50%
+
+    a
+      color: $color-white
 
     .docs--open &
       padding: #{2 * $baseline} 0
@@ -151,9 +203,6 @@
   a
     color: $color-white
     padding: 0 !important
-
-    a
-      color: $color-white
 
   .docs--open &
     height: calc(100vh - 10.5em)

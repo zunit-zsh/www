@@ -1,15 +1,15 @@
 .button
-  background: linear-gradient(to bottom right, $color-pink, $color-red)
+  background: $color-pink
   border-radius: .15em
   color: $color-white
   font-size: .75em
   margin: 0 #{.25 * $baseline} #{.5 * $baseline}
   padding: #{.25 * $baseline} #{.5 * $baseline}
   position: relative
-  transition: color .25s
+  transition: background .25s
 
   &::before
-    background: $color-white
+    background: $color-purple
     border-radius: .1em
     bottom: .25em
     content: ''
@@ -26,7 +26,7 @@
     z-index: 1
 
   &:hover
-    color: $color-pink
+    background: linear-gradient(to right, $color-pink, $color-red)
     text-decoration: none
 
     &::before

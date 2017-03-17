@@ -1,36 +1,107 @@
 .bottom
-  align-items: center
+  align-items: flex-start
   background: $color-white
-  color: $color-black
+  background-image: linear-gradient(to bottom right, $color-pink, $color-red)
+  color: $color-white
   display: flex
+  flex-wrap: wrap
   justify-content: space-between
-  padding: #{4 * $baseline}
+  padding: #{4 * $baseline} $baseline
   position: relative
 
-  &::after
-    background-image: linear-gradient(to right, $color-pink, $color-red)
-    content: ''
-    height: .25em
-    position: absolute
-    bottom: 100%
-    left: 0
-    width: 100%
+  @media (min-width:32em)
+    padding: #{4 * $baseline} #{2 * $baseline}
 
-  &--copyright
-    text-align: right
+  @media (min-width: 64em)
+    padding: #{4 * $baseline}
+
+  &::before
+    background: url('/img/1315493-water-bubbles.jpg') center / cover no-repeat
+    bottom: 0
+    content: ''
+    left: 0
+    opacity: .05
+    pointer-events: none
+    position: absolute
+    right: 0
+    top: .75em
+    z-index: 0
+
+  > div
+    position: relative
+    z-index: 1
+
+  &--branding
+    flex: 0 0 100%
+    margin: 0 0 3em
+
+    @media (min-width: 72em)
+      flex: 0 0 20%
+      margin: 0
+
+    @media (min-width: 80em)
+      flex: 0 0 25%
+
+    &-logo
+      width: 2.25em
+
+      @media (min-width: 72em)
+        margin: 0 0 7.5em
+
+    p
+      margin: 0 0 7.5em
+
+      &:last-child
+        margin: 0
+
+    a
+      color: $color-purple
+
+  &--docs
+    display: flex
+    flex: 0 0 100%
+    flex-wrap: wrap
+
+    @media (min-width: 72em)
+      flex: 0 0 80%
+
+    @media (min-width: 80em)
+      flex: 0 0 75%
+
+    > div
+      flex: 0 0 100%
+
+      @media (min-width: 32em)
+        flex: 0 0 50%
+
+      @media (min-width: 50em)
+        flex: 0 0 25%
+
+    ul
+      list-style: none
+      margin: 0 0 3em
+
+    a
+      color: $color-white
+
+    &-misc
+      display: flex
+      flex: 0 0 100% !important
+      justify-content: flex-end
 
 .molovo
   &--logo
     width: 3em
 
     &_frame
-      fill: $color-molovo-red
+      fill: $color-white
 
     &_lens-left,
     &_lens-right
       fill: transparent
 
     &:hover
-      .molovo--logo_lens-left,
+      .molovo--logo_lens-left
+        fill: $color-molovo-red
       .molovo--logo_lens-right
-        fill: rgba($color-black, .3)
+        fill: $color-molovo-blue
