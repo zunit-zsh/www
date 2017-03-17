@@ -14,14 +14,14 @@
   z-index: 999
 
   &::before
-    background: url(/zunit/img/logo-mark.svg) right center / contain no-repeat
+    background: url('/zunit/img/logo-mark.svg') right center / contain no-repeat
     content: ''
-    left: 1.5em
     height: 1em
+    left: 1.5em
     position: absolute
+    top: 1em
     transform: translateX(-100%) translateX(-.125em)
     transition: height .25s, top .25s, width .25s
-    top: 1em
     width: 1em
 
     .docs--open &
@@ -52,15 +52,6 @@
 
     @media (min-width: 64em)
       left: 6em
-
-  // &::after
-  //   background-image: linear-gradient(to right, $color-pink, $color-red)
-  //   content: ''
-  //   height: .75em
-  //   left: 0
-  //   position: absolute
-  //   top: 100%
-  //   width: 100%
 
   @media (min-width: 32em)
     padding: 0 #{2 * $baseline}

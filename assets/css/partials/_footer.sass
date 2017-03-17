@@ -9,7 +9,7 @@
   padding: #{4 * $baseline} $baseline
   position: relative
 
-  @media (min-width:32em)
+  @media (min-width: 32em)
     padding: #{4 * $baseline} #{2 * $baseline}
 
   @media (min-width: 64em)
@@ -88,20 +88,3 @@
       display: flex
       flex: 0 0 100% !important
       justify-content: flex-end
-
-.molovo
-  &--logo
-    width: 3em
-
-    &_frame
-      fill: $color-white
-
-    &_lens-left,
-    &_lens-right
-      fill: transparent
-
-    &:hover
-      .molovo--logo_lens-left
-        fill: $color-molovo-red
-      .molovo--logo_lens-right
-        fill: $color-molovo-blue
