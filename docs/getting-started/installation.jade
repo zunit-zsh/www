@@ -11,14 +11,9 @@ block docs-content
       ### Requirements
 
       * ZSH 4.3.12+
-      * The [color](https://github.com/molovo/color) and [revolver](https://github.com/molovo/revolver) executables. The Zulu installation method will install these for you, or you can install them yourself using the commands to the right.
+      * The [color](https://github.com/molovo/color) and [revolver](https://github.com/molovo/revolver) executables.
 
-  feature.bump
-    :marked
-      ```bash
-      curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
-      curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
-      ```
+  feature
 
   section
     :marked
@@ -34,6 +29,28 @@ block docs-content
 
   section
     :marked
+      ### Installing with [zplug](https://github.com/zplug/zplug)
+
+      ZUnit and its dependencies can all be installed with zplug.
+
+  feature.bump
+    :marked
+      ```bash
+      zplug 'molovo/color', \
+        as:command, \
+        use:'color.zsh', \
+        rename-to:color
+      zplug 'molovo/revolver', \
+        as:command, \
+        use:revolver
+      zplug 'molovo/zunit', \
+        as:command, \
+        use:zunit, \
+        hook-build:'./build.zsh'
+      ```
+
+  section
+    :marked
       ### Installing Manually
 
       To install manually, just clone the ZUnit source code and build the executable. Once done, copy the `zunit` executable to somewhere in your `$path`.
@@ -41,8 +58,15 @@ block docs-content
   feature.bump
     :marked
       ```bash
+      # Install color and revolver
+      curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
+      curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
+
+      # Build ZUnit from source
       git clone https://github.com/molovo/zunit
       cd zunit
       ./build.zsh
+
+      # Copy zunit into $PATH
       cp zunit /usr/local/bin
       ```
