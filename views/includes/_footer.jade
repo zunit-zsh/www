@@ -3,11 +3,6 @@ footer.bottom
     a(href=baseUrl)
       img(src=baseUrl + '/img/logo-mark-white.svg' class='bottom--branding-logo' alt='ZUnit | A powerful testing framework for ZSH projects')
 
-    :marked
-      &copy; 2017 [molovo](//molovo.co)
-
-
-
   .bottom--docs
     div
       h4 Getting Started
@@ -29,6 +24,16 @@ footer.bottom
 
       ul.nav--docs-command-line-usage
 
-    .bottom--docs-misc
-      a(href='https://heapanalytics.com/?utm_source=badge' rel="nofollow")
+  .bottom--misc
+    .bottom--misc-affiliate
+      a(href='https://heapanalytics.com/?utm_source=badge' rel='nofollow')
         img(style='width:108px;height:41px' src='https://heapanalytics.com/img/badge.png' alt='Heap | Mobile and Web Analytics')
+
+    .bottom--misc-legal
+      :marked
+        &copy; 2017 [James Dinsdale](//molovo.co). Released under the [MIT](//choosealicense.com/licenses/mit) license.
+
+      p
+        | Made with&nbsp;
+        include /icons/_heart.svg
+        | in Southsea, UK.

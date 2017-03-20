@@ -46,15 +46,6 @@
       @media (min-width: 72em)
         margin: 0 0 7.5em
 
-    p
-      margin: 0 0 7.5em
-
-      &:last-child
-        margin: 0
-
-    a
-      color: $color-purple
-
   &--docs
     display: flex
     flex: 0 0 100%
@@ -82,7 +73,28 @@
     a
       color: $color-white
 
-    &-misc
-      display: flex
-      flex: 0 0 100% !important
-      justify-content: flex-end
+  &--misc
+    display: flex
+    flex: 0 0 100% !important
+    flex-direction: row-reverse
+    flex-wrap: wrap
+    justify-content: space-between
+
+    @media (max-width: 32em)
+      &-affiliate,
+      &-legal
+        flex: 0 0 100%
+        margin: 0 0 $baseline
+
+    p
+      margin: 0
+
+    a
+      color: $color-white
+      font-weight: 700
+
+    .icon
+      path
+        stroke: $color-purple
+        stroke-width: 1px
+        fill: transparent
