@@ -53,8 +53,6 @@ module.exports =
     '.editorconfig'
   ]
 
-  output: 'public/zunit'
-
   browser:
     open: false
 
@@ -93,8 +91,8 @@ module.exports =
     sourcemap: true
 
   locals:
-    baseUrl: '/zunit'
-    baseDomain: 'https://molovo.co'
+    baseUrl: ''
+    baseDomain: 'https://zunit.xyz'
     render: fs.readFileSync
     md: marked
     date: (date) ->

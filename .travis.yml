@@ -31,7 +31,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  local_dir: public/zunit
+  local_dir: public
   github_token: $GITHUB_TOKEN
   repo: molovo/zunit
   target_branch: gh-pages
