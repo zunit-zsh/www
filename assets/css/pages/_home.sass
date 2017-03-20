@@ -1,11 +1,31 @@
 .intro
-  padding: #{4 * $baseline} $baseline
+  background-image: linear-gradient(to bottom right, $color-purple-two, $color-purple)
+  color: $color-white
+  padding: #{8 * $baseline} $baseline #{4 * $baseline}
+  position: relative
+  margin-top: 0
+
+  &::before
+    background: url(/img/polygon-background5.png) bottom center / cover no-repeat
+    bottom: 0
+    content: ''
+    left: 0
+    opacity: .7
+    position: absolute
+    right: 0
+    top: 0
+    transform: rotate(180deg)
+    z-index: 0
+
+  > *
+    position: relative
+    z-index: 1
 
   @media (min-width: 32em)
-    padding: #{4 * $baseline} #{2 * $baseline}
+    padding: #{8 * $baseline} #{2 * $baseline} #{4 * $baseline}
 
   @media (min-width: 42em)
-    padding: #{4 * $baseline} 0
+    padding: #{8 * $baseline} 0 #{4 * $baseline}
 
   h1
     font-weight: 300

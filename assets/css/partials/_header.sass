@@ -13,6 +13,31 @@
   width: 100%
   z-index: 999
 
+  body:not(.page--home) &,
+  .page--home.scrolled &,
+  .page--home.docs--open &
+    > *
+      position: relative
+      z-index: 1
+
+    &::after
+      background: url(/img/polygon-background5.png) bottom center / cover no-repeat
+      bottom: 0
+      content: ''
+      left: 0
+      opacity: .7
+      pointer-events: none
+      position: absolute
+      right: 0
+      top: 0
+      transform: rotate(180deg)
+      z-index: 0
+
+  .page--home:not(.scrolled):not(.docs--open) &
+    background: transparent
+    box-shadow: none
+    color: $color-black
+
   &::before
     background: url('https://molovo.co/zunit/img/logo-mark.svg') right center / contain no-repeat
     content: ''
@@ -23,6 +48,7 @@
     transform: translateX(-100%) translateX(-.125em)
     transition: height .25s, top .25s, width .25s
     width: 1em
+    z-index: 1
 
     .docs--open &
       top: 3.25em
