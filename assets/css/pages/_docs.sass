@@ -85,3 +85,33 @@
         max-width: 100%
         overflow-x: auto
         padding: 0
+
+  &--chat
+    align-items: center
+    background-image: linear-gradient(to bottom right, $color-purple-two, $color-purple)
+    color: $color-white
+    display: flex
+    justify-content: space-between
+    padding: #{2 * $baseline} #{4 * $baseline}
+    position: relative
+
+    &::before
+      background: url('/img/polygon-background5.png') center / cover no-repeat
+      bottom: 0
+      content: ''
+      left: 0
+      opacity: .7
+      pointer-events: none
+      position: absolute
+      right: 0
+      top: 0
+      transform: rotate(180deg)
+      z-index: 0
+
+    &-copy,
+    &-cta
+      position: relative
+      z-index: 1
+
+      h3, p
+        margin: 0
