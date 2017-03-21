@@ -91,9 +91,18 @@
     background-image: linear-gradient(to bottom right, $color-purple-two, $color-purple)
     color: $color-white
     display: flex
-    justify-content: space-between
-    padding: #{2 * $baseline} #{4 * $baseline}
+    flex-wrap: wrap
+    padding: #{2 * $baseline} $baseline
     position: relative
+
+    @media (min-width: 32em)
+      padding: #{2 * $baseline} #{2 * $baseline}
+
+    @media (min-width: 64em)
+      padding: #{2 * $baseline} #{4 * $baseline}
+
+    @media (min-width: 32em)
+      justify-content: space-between
 
     &::before
       background: url('/img/polygon-background5.png') center / cover no-repeat
@@ -113,5 +122,16 @@
       position: relative
       z-index: 1
 
+      @media (max-width: 32em)
+        flex: 0 0 100%
+
+    &-copy
       h3, p
         margin: 0
+
+      @media (max-width: 42em)
+        p
+          margin: 0 0 $baseline
+
+    &-cta
+      flex-shrink: 0
