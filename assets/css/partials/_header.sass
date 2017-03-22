@@ -15,7 +15,7 @@
   z-index: 999
 
   .search--open &
-    background-image: linear-gradient(to bottom right, $color-black, lighten($color-black, 5%))
+    background-image: linear-gradient(to bottom right, darken($color-purple-two, 20%), darken($color-purple, 20%))
 
   body:not(.page--home) &,
   .page--home.scrolled &,
@@ -34,6 +34,7 @@
       position: absolute
       right: 0
       top: 0
+      transition: background-color .25s
       transform: rotate(180deg)
       z-index: 0
 
@@ -276,5 +277,5 @@
       .search--open &
         height: calc(100vh - 12em)
 
-      h3
-        margin: 0
+      // h3
+      //   margin: 0

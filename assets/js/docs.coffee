@@ -133,7 +133,7 @@ module.exports = class Docs
           p.innerHTML = result.description
 
           a.appendChild h3
-          a.appendChild p
+          # a.appendChild p
           li.appendChild a
           searchResultsPane.appendChild li
 
