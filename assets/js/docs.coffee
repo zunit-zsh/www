@@ -76,10 +76,16 @@ module.exports = class Docs
         document.body.classList.remove 'search--open'
         searchInput.value = ''
 
+  ###*
+   * Search documentation and display results
+   *
+   * @param  {string} term The search term
+   *
+   * @return {Promise}
+  ###
   search: (term) =>
     @getDocs()
       .then (docs) ->
-        console.log 'searching'
         searchable = []
 
         searchable.push.apply searchable, docs.items
@@ -87,11 +93,8 @@ module.exports = class Docs
 
         # Flatten the documentation list
         for key of docs
-          console.log key
           if docs[key].items?
             searchable.push.apply searchable, docs[key].items
-
-        console.log searchable
 
         # Create the fuse instance
         options =
@@ -128,12 +131,13 @@ module.exports = class Docs
 
           h3 = document.createElement 'h3'
           h3.innerHTML = result.title
-
-          p = document.createElement 'p'
-          p.innerHTML = result.description
-
           a.appendChild h3
-          # a.appendChild p
+
+          if result.description?
+            p = document.createElement 'p'
+            p.innerHTML = result.description
+            a.appendChild p
+
           li.appendChild a
           searchResultsPane.appendChild li
 
@@ -225,10 +229,10 @@ module.exports = class Docs
 
       # If we are within the cache time, get and parse the
       # cached documentation list
-      if (updatedAt + 300) > timestamp
-        json = localStorage.getItem 'documentation'
-        resolve JSON.parse(json)
-        return
+      # if (updatedAt + 300) > timestamp
+      #   json = localStorage.getItem 'documentation'
+      #   resolve JSON.parse(json)
+      #   return
 
       # Fetch the list from the stored JSON file
       fetch "#{window.baseDomain}#{window.baseUrl}/docs.json"

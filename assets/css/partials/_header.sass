@@ -10,12 +10,11 @@
   padding: 0 $baseline
   position: fixed
   top: 0
-  transition: background-image .25s
   width: 100%
   z-index: 999
 
   .search--open &
-    background-image: linear-gradient(to bottom right, darken($color-purple-two, 20%), darken($color-purple, 20%))
+    background-image: linear-gradient(to bottom right, darken($color-purple-two, 10%), darken($color-purple, 10%))
 
   body:not(.page--home) &,
   .page--home.scrolled &,
@@ -260,6 +259,7 @@
       border-radius: .15em
       box-sizing: border-box
       display: inline-block
+      font-family: $font-primary
       font-size: 1em
       line-height: $baseline
       margin: 0 0 #{.5 * $baseline}
@@ -276,6 +276,8 @@
 
       .search--open &
         height: calc(100vh - 12em)
+        overflow: auto
+        padding: 0 0 #{2 * $baseline}
 
-      // h3
-      //   margin: 0
+      h3:not(:last-child)
+        margin: 0
