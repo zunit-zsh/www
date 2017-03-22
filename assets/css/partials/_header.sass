@@ -10,8 +10,12 @@
   padding: 0 $baseline
   position: fixed
   top: 0
+  transition: background-image .25s
   width: 100%
   z-index: 999
+
+  .search--open &
+    background-image: linear-gradient(to bottom right, $color-black, lighten($color-black, 5%))
 
   body:not(.page--home) &,
   .page--home.scrolled &,
@@ -191,6 +195,7 @@
 
 .nav--docs
   color: $color-white
+  align-content: flex-start
   display: flex
   flex: 0 0 100%
   flex-wrap: wrap
@@ -221,8 +226,8 @@
     color: $color-white
     padding: 0 !important
 
-  .docs--open &
-    height: calc(100vh - 10.5em)
+  .docs--open:not(.search--open) &
+    height: calc(100vh - 15em)
     opacity: 1
     overflow: auto
     padding: 0 0 #{.5 * $baseline}
@@ -235,3 +240,41 @@
     @media (min-width: 54em)
       height: 9.75em
       overflow: hidden
+
+  &-search
+    flex: 0 0 100%
+    height: 0
+    overflow: hidden
+    transition: height .25s
+
+    .docs--open &
+      height: 6em
+
+    @media (max-width: 32em)
+      .docs--open:not(.search--open) &
+        padding-top: $baseline
+
+    input
+      border: 0
+      border-radius: .15em
+      box-sizing: border-box
+      display: inline-block
+      font-size: 1em
+      line-height: $baseline
+      margin: 0 0 #{.5 * $baseline}
+      padding: #{.5 * $baseline} $baseline
+      width: 100%
+
+    &-results
+      color: $color-white
+      flex: 0 0 100%
+      height: 0
+      margin: 0
+      overflow: hidden
+      transition: height .25s
+
+      .search--open &
+        height: calc(100vh - 12em)
+
+      h3
+        margin: 0

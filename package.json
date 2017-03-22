@@ -20,6 +20,7 @@
     "date_format": "^0.1.1",
     "dynamic-content": "^0.3.0",
     "es6-promise": "^4.0.5",
+    "fuse.js": "^2.6.2",
     "highlight.js": "^9.7.0",
     "image-zoom": "^1.1.1",
     "isomorphic-fetch": "^2.2.1",

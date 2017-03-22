@@ -1,3 +1,5 @@
+Fuse = require 'fuse.js'
+
 require('es6-promise').polyfill()
 require 'isomorphic-fetch'
 
@@ -37,13 +39,104 @@ module.exports = class Docs
   menuPane = document.querySelector '.nav--docs'
 
   ###*
+   * The search input
+   *
+   * @type {HTMLElement}
+  ###
+  searchInput = document.querySelector '#search'
+
+  ###*
+   * The search results pane
+   *
+   * @type {HTMLElement}
+  ###
+  searchResultsPane = document.querySelector '.nav--docs-search-results'
+
+  ###*
    * Start your engines!
    *
    * @return {Docs}
   ###
   constructor: () ->
     @registerNavListeners()
+    @registerSearchListeners()
     @renderNav()
+
+  ###*
+   * Register listeners to handle search input
+  ###
+  registerSearchListeners: () ->
+    searchInput.addEventListener 'keyup', (evt) =>
+      key = evt.keyCode or evt.which
+
+      if searchInput.value and key isnt keyCodes.ESC
+        document.body.classList.add 'search--open'
+        @search searchInput.value
+      else
+        document.body.classList.remove 'search--open'
+        searchInput.value = ''
+
+  search: (term) =>
+    @getDocs()
+      .then (docs) ->
+        console.log 'searching'
+        searchable = []
+
+        searchable.push.apply searchable, docs.items
+        delete docs.items
+
+        # Flatten the documentation list
+        for key of docs
+          console.log key
+          if docs[key].items?
+            searchable.push.apply searchable, docs[key].items
+
+        console.log searchable
+
+        # Create the fuse instance
+        options =
+          threshold: 0.6
+          keys: [{
+            name: 'title'
+            weight: 1
+          }, {
+            name: 'description'
+            weight: 0.7
+          }, {
+            name: 'content'
+            weight: 0.5
+          }, {
+            name: '_url'
+            weight: 0.5
+          }]
+        fuse = new Fuse(searchable, options)
+
+        # Filter the results
+        results = fuse.search(term)
+        console.log results
+
+        # Clear the search results pane
+        searchResultsPane.innerHTML = ''
+
+        # Loop through each of the results and append them to the pane
+        for result in results
+          li = document.createElement 'li'
+          li.classList.add 'nav--docs-search-results-item'
+
+          a = document.createElement 'a'
+          a.href = result._url
+
+          h3 = document.createElement 'h3'
+          h3.innerHTML = result.title
+
+          p = document.createElement 'p'
+          p.innerHTML = result.description
+
+          a.appendChild h3
+          a.appendChild p
+          li.appendChild a
+          searchResultsPane.appendChild li
+
 
   ###*
    * Register listeners for opening and closing the documentation navigation
@@ -54,6 +147,8 @@ module.exports = class Docs
 
       if document.body.classList.contains 'docs--open'
         document.body.classList.remove 'docs--open'
+        document.body.classList.remove 'search--open'
+        searchInput.value = ''
       else
         document.body.classList.add 'docs--open'
 
@@ -78,7 +173,6 @@ module.exports = class Docs
         # Loop through each of the documentation areas
         for key of docs
           do (key) ->
-            console.log key
             # Find the list to put navigation items in
             lists = document.querySelectorAll ".nav--docs-#{key}"
             for list in lists
