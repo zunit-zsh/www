@@ -60,7 +60,27 @@ block docs-content
     :marked
       ### Installing Manually
 
-      To install manually, just clone the ZUnit source code and build the executable. Once done, copy the `zunit` executable to somewhere in your `$path`.
+      To install manually, install the dependencies, and then download the ZUnit executable straight into your `$path`.
+
+  feature.bump
+    :marked
+      ```bash
+      # Install color and revolver
+      curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
+      curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
+
+      # Install ZUnit into $path
+      curl -L https://github.com/molovo/zunit/releases/download/v0.6.4/zunit > /usr/local/bin/zunit
+
+      # Optional, install ZUnit ZSH completion into $fpath
+      curl -L https://github.com/molovo/zunit/releases/download/v0.6.4/zunit.zsh-completion > "$fpath[1]/_zunit"
+      ```
+
+  section
+    :marked
+      ### Building From Source
+
+      To build ZUnit from source, once you've installed the dependencies just clone the [git repository](https://github.com/molovo/zunit) and run the included `build.zsh` script. Once done, copy the `zunit` executable to somewhere in your `$path`.
 
   feature.bump
     :marked
@@ -74,6 +94,9 @@ block docs-content
       cd zunit
       ./build.zsh
 
-      # Copy zunit into $PATH
+      # Copy zunit into $path
       cp zunit /usr/local/bin
+
+      # Optional, copy ZUnit ZSH completion into $fpath
+      cp zunit.zsh-completion "$fpath[1]/_zunit"
       ```
