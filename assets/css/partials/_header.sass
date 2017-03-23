@@ -146,13 +146,13 @@
       .docs--open &
         padding-right: 3em
 
-    strong
+    > a > strong
       display: inline-block
       font-size: 1.5em
       line-height: #{(1 / 1.5) * $baseline}
       top: #{(-.5 / 1.5) * $baseline}
 
-    span
+    > a > span
       @media (max-width: 32em)
         display: none
 
@@ -164,11 +164,26 @@
         left: #{-2.425 * $baseline}
         top: #{.5 * $baseline}
 
+        .site--beta &
+          left: #{-4.25 * $baseline}
+
         .scrolled:not(.docs--open) &
           left: 0
           top: 0
 
-    strong, span
+    &_beta
+      background: $color-red
+      border-radius: .15em
+      display: inline-block
+      font-size: .75rem
+      line-height: $baseline
+      margin-left: .75em
+      padding: 0 .375em
+      text-transform: uppercase
+      vertical-align: middle
+
+    > a > strong,
+    > a > span
       position: relative
       transition: font-size .25s, left .25s, line-height .25s, margin-right .25s, top .25s
       will-change: font-size, left, line-height, margin-right, top
@@ -179,7 +194,7 @@
       padding: #{.5 * $baseline} 0
 
     &-logo
-      strong
+      > a > strong
         font-size: inherit
         line-height: inherit
         margin-right: 1ch
@@ -187,7 +202,7 @@
 
   @media (max-width: 50em)
     &-logo
-      strong
+      > a > strong
         font-size: inherit
         line-height: inherit
         margin-right: 1ch
