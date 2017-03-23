@@ -106,3 +106,22 @@ block docs-content
         assert "${lines[3]}" equals 'my-third-file'
       }
       ```
+
+  section
+    :marked
+      ### Skipping tests
+
+      If you want to skip a test, just use the `skip` helper method. This will stop execution of the test immediately and output the provided message, without failing the whole test run.
+
+  feature
+    :marked
+      ```zunit
+      # The test will be skipped if it is run on macOS
+      @test 'Test command output' {
+        if [[ $OSTYPE =~ 'darwin.*' ]]; then
+          skip 'Test does not run on macOS'
+        fi
+
+        # Test code here
+      }
+      ```
