@@ -43,7 +43,7 @@
         width: 50%
 
     > feature
-      background: $color-black
+      background: $color-gray
       box-sizing: border-box
       margin: 0 0 $baseline
       padding: $baseline
@@ -58,7 +58,7 @@
           position: relative
 
           &::before
-            background: $color-black
+            background: $color-gray
             bottom: calc(100% - 1px)
             content: ''
             height: 100vh
@@ -70,7 +70,7 @@
           position: relative
 
           &::after
-            background: $color-black
+            background: $color-gray
             content: ''
             height: #{5 * $baseline}
             left: 0
@@ -85,6 +85,10 @@
         max-width: 100%
         overflow-x: auto
         padding: 0
+
+    [class^='nav--docs-']
+      list-style: none
+      margin: 0 0 $baseline
 
   &--chat
     align-items: center
