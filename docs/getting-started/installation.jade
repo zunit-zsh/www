@@ -73,7 +73,7 @@ block docs-content
       curl -L https://github.com/molovo/zunit/releases/download/v0.6.4/zunit > /usr/local/bin/zunit
 
       # Optional, install ZUnit ZSH completion into $fpath
-      curl -L https://github.com/molovo/zunit/releases/download/v0.6.4/zunit.zsh-completion > "$fpath[1]/_zunit"
+      curl -L https://github.com/molovo/zunit/releases/download/v0.6.4/zunit.zsh-completion > "${fpath[1]}/_zunit"
       ```
 
   section
@@ -98,5 +98,5 @@ block docs-content
       cp zunit /usr/local/bin
 
       # Optional, copy ZUnit ZSH completion into $fpath
-      cp zunit.zsh-completion "$fpath[1]/_zunit"
+      cp zunit.zsh-completion "${fpath[1]}/_zunit"
       ```
