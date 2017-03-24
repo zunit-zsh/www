@@ -224,15 +224,19 @@ module.exports = class Docs
   getDocs: () ->
     new Promise (resolve, reject) ->
       # Get the updated at timestamp
-      updatedAt = localStorage.getItem 'documentation_updated_at'
+      updatedAt = parseInt localStorage.getItem('documentation_updated_at')
       timestamp = new Date().getTime()
+
+      console.log(updatedAt)
+      console.log(timestamp)
+      console.log((updatedAt + 300) > timestamp)
 
       # If we are within the cache time, get and parse the
       # cached documentation list
-      # if (updatedAt + 300) > timestamp
-      #   json = localStorage.getItem 'documentation'
-      #   resolve JSON.parse(json)
-      #   return
+      if (updatedAt + 300) > timestamp
+        json = localStorage.getItem 'documentation'
+        resolve JSON.parse(json)
+        return
 
       # Fetch the list from the stored JSON file
       fetch "#{window.baseDomain}#{window.baseUrl}/docs.json"
