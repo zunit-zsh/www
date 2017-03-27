@@ -92,7 +92,7 @@ class Header
   getLatestRelease: () ->
     new Promise (resolve, reject) ->
       # Get the updated at timestamp
-      updatedAt = localStorage.getItem 'version_updated_at'
+      updatedAt = parseInt localStorage.getItem('version_updated_at')
       timestamp = new Date().getTime()
 
       # If we are within the cache time, get and parse the
@@ -102,11 +102,23 @@ class Header
         resolve version
         return
 
+      url = 'https://api.github.com/repos/molovo/zunit/releases/latest'
+      if window.baseDomain isnt 'https://zunit.xyz'
+        next = true
+        url  = 'https://api.github.com/repos/molovo/zunit/releases'
+
       # Fetch the list from the stored JSON file
-      fetch 'https://api.github.com/repos/molovo/zunit/releases/latest'
+      fetch url
         # Parse the JSON response
         .then (response) ->
           response.json()
+
+        # If on 'next' site, use first release in list
+        .then (response) ->
+          if next
+            return response[0]
+
+          response
 
         # Cache the version number
         .then (response) ->

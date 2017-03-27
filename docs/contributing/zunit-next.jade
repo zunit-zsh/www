@@ -1,0 +1,30 @@
+---
+title: ZUnit Next
+seq: 1
+description: How to contribute by testing the next version of ZUnit
+---
+
+extends /layouts/_docs
+
+block docs-content
+  section
+    :marked
+      ZUnit is in constant development, and as such we need members of the community who are willing to use the most cutting-edge version of ZUnit's codebase and help us improve it with bug reports, suggestions and comments.
+
+      ZUnit's [Github repository](https://github.com/molovo/zunit) will always contain a branch called `next`, which contains the code which will be included in the next official release of ZUnit. As well as this, documentation for the next release will always be live at <https://next.zunit.xyz>.
+
+  feature
+
+  section
+    :marked
+      To use ZUnit Next, you will need to build ZUnit from source, and checkout the `next` branch.
+
+  feature
+    :marked
+      ```bash
+      git clone https://github.com/molovo/zunit zunit
+      cd zunit
+      git checkout next
+      ./build.zsh
+      cp zunit /usr/local/bin
+      ```
