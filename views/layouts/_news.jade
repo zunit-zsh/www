@@ -15,7 +15,7 @@ block content
 
     if records.authors[post.author]
       article.news--author
-        img(src='#{records.authors[post.author].image}' class='news--author-image')
+        img(src='#{records.authors[post.author].image}' class='news--author-image' alt='Image of #{records.authors[post.author].name}')
         div.news--author-details
           h4= records.authors[post.author].name
           p= records.authors[post.author].description
