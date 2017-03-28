@@ -69,6 +69,10 @@ class Header
     else
       document.body.classList.remove 'scrolled'
 
+  ###*
+   * Get the latest version number from Github's API,
+   * and update version placeholders across the site
+  ###
   updateVersion: () ->
     placeholder = document.querySelector '.nav--main-install-version'
     installDocs = document.querySelector '.install--version-instructions code'
@@ -80,8 +84,11 @@ class Header
         installDocs.innerHTML = installDocs.innerHTML
           .replace(/__version__/g, version)
 
-
-
+  ###*
+   * Get the latest version number from Github's API
+   *
+   * @return {Promise}
+  ###
   getLatestRelease: () ->
     new Promise (resolve, reject) ->
       # Get the updated at timestamp
