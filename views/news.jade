@@ -1,0 +1,16 @@
+---
+title: News
+---
+
+extends /layouts/_news
+
+block news-content
+  ul.news--list
+    for article in site.news
+      li
+        article.news--list-item
+          h2
+            a(href=article._url)= article.title
+          if records.authors[article.author]
+            h6 by <a href='//#{records.authors[article.author].website}'>#{records.authors[article.author].name}</a> on
+              time= date(article.date)

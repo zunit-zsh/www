@@ -70,11 +70,15 @@ class Header
       document.body.classList.remove 'scrolled'
 
   updateVersion: () ->
-    versionPlaceholder = document.querySelector '.nav--main-install-version'
+    placeholder = document.querySelector '.nav--main-install-version'
+    installDocs = document.querySelector '.install--version-instructions code'
 
     @getLatestRelease()
       .then (version) ->
-        versionPlaceholder.innerHTML = version
+        placeholder.innerHTML = version
+
+        installDocs.innerHTML = installDocs.innerHTML.replace(/__version__/g, version)
+
 
 
   getLatestRelease: () ->

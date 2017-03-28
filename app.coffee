@@ -12,6 +12,7 @@ fs              = require 'fs'
 marked          = require 'marked'
 moment          = require 'moment'
 highlight       = require 'highlight.js'
+records         = require 'roots-records'
 
 lang = highlight.getLanguage 'bash'
 lang.keywords.keyword += ' assert run load'
@@ -24,7 +25,7 @@ marked.setOptions
   tables: true
   breaks: true
   pedantic: false
-  sanitize: true
+  sanitize: false
   smartLists: true
   smartypants: true
   highlight: (code, lang) ->
@@ -75,6 +76,9 @@ module.exports =
       out: 'js/main.js'
       minify: false
       sourceMap: true
+    )
+    records(
+      authors: {file: 'authors.json'}
     )
   ]
 

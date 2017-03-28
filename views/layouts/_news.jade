@@ -1,0 +1,27 @@
+extends /layout
+
+block vars
+  - var bodyClass = 'page--news'
+
+block content
+  main.news
+    article.news--content
+      h1= post.title
+      if records.authors[post.author]
+        h6 by <a href='//#{records.authors[post.author].website}'>#{records.authors[post.author].name}</a> on
+          time= date(post.date)
+
+      block news-content
+
+    if records.authors[post.author]
+      article.news--author
+        img(src='#{records.authors[post.author].image}' class='news--author-image')
+        div.news--author-details
+          h4= records.authors[post.author].name
+          p= records.authors[post.author].description
+
+          div.news--author-details-links
+            a(href='//#{records.authors[post.author].website}/') #{records.authors[post.author].website}
+            a(href='//twitter.com/#{records.authors[post.author].twitter}/') @#{records.authors[post.author].twitter}
+
+  include /includes/_chat

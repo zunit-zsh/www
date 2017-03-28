@@ -29,10 +29,16 @@ block docs-content
       Installing with Zulu will handle building ZUnit from source, and installing all dependencies for you.
 
   feature.bump
-    :marked
-      ```bash
-      zulu install zunit
-      ```
+    if baseDomain === 'https://zunit.xyz'
+      :marked
+        ```bash
+        zulu install zunit
+        ```
+    else
+      :marked
+        ```bash
+        zulu install --branch next zunit
+        ```
 
   section
     :marked
@@ -41,20 +47,37 @@ block docs-content
       ZUnit and its dependencies can all be installed with zplug.
 
   feature.bump
-    :marked
-      ```bash
-      zplug 'molovo/color', \
-        as:command, \
-        use:'color.zsh', \
-        rename-to:color
-      zplug 'molovo/revolver', \
-        as:command, \
-        use:revolver
-      zplug 'molovo/zunit', \
-        as:command, \
-        use:zunit, \
-        hook-build:'./build.zsh'
-      ```
+    if baseDomain === 'https://zunit.xyz'
+      :marked
+        ```bash
+        zplug 'molovo/color', \
+          as:command, \
+          use:'color.zsh', \
+          rename-to:color
+        zplug 'molovo/revolver', \
+          as:command, \
+          use:revolver
+        zplug 'molovo/zunit', \
+          as:command, \
+          use:zunit, \
+          hook-build:'./build.zsh'
+        ```
+    else
+      :marked
+        ```bash
+        zplug 'molovo/color', \
+          as:command, \
+          use:'color.zsh', \
+          rename-to:color
+        zplug 'molovo/revolver', \
+          as:command, \
+          use:revolver
+        zplug 'molovo/zunit', \
+          at:next, \
+          as:command, \
+          use:zunit, \
+          hook-build:'./build.zsh'
+        ```
 
   section
     :marked
@@ -62,7 +85,7 @@ block docs-content
 
       To install manually, install the dependencies, and then download the ZUnit executable straight into your `$path`.
 
-  feature.bump
+  feature.bump.install--version-instructions
     :marked
       ```bash
       # Install color and revolver
@@ -70,10 +93,10 @@ block docs-content
       curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
       # Install ZUnit into $path
-      curl -L https://github.com/molovo/zunit/releases/download/v0.6.4/zunit > /usr/local/bin/zunit
+      curl -L https://github.com/molovo/zunit/releases/download/__version__/zunit > /usr/local/bin/zunit
 
       # Optional, install ZUnit ZSH completion into $fpath
-      curl -L https://github.com/molovo/zunit/releases/download/v0.6.4/zunit.zsh-completion > "${fpath[1]}/_zunit"
+      curl -L https://github.com/molovo/zunit/releases/download/__version__/zunit.zsh-completion > "${fpath[1]}/_zunit"
       ```
 
   section
@@ -83,20 +106,40 @@ block docs-content
       To build ZUnit from source, once you've installed the dependencies just clone the [git repository](https://github.com/molovo/zunit) and run the included `build.zsh` script. Once done, copy the `zunit` executable to somewhere in your `$path`.
 
   feature.bump
-    :marked
-      ```bash
-      # Install color and revolver
-      curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
-      curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
+    if baseDomain === 'https://zunit.xyz'
+      :marked
+        ```bash
+        # Install color and revolver
+        curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
+        curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
-      # Build ZUnit from source
-      git clone https://github.com/molovo/zunit
-      cd zunit
-      ./build.zsh
+        # Build ZUnit from source
+        git clone https://github.com/molovo/zunit
+        cd zunit
+        ./build.zsh
 
-      # Copy zunit into $path
-      cp zunit /usr/local/bin
+        # Copy zunit into $path
+        cp zunit /usr/local/bin
 
-      # Optional, copy ZUnit ZSH completion into $fpath
-      cp zunit.zsh-completion "${fpath[1]}/_zunit"
-      ```
+        # Optional, copy ZUnit ZSH completion into $fpath
+        cp zunit.zsh-completion "${fpath[1]}/_zunit"
+        ```
+    else
+      :marked
+        ```bash
+        # Install color and revolver
+        curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
+        curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
+
+        # Build ZUnit from source
+        git clone https://github.com/molovo/zunit
+        cd zunit
+        git checkout next
+        ./build.zsh
+
+        # Copy zunit into $path
+        cp zunit /usr/local/bin
+
+        # Optional, copy ZUnit ZSH completion into $fpath
+        cp zunit.zsh-completion "${fpath[1]}/_zunit"
+        ```

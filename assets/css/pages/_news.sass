@@ -1,0 +1,36 @@
+.news
+  padding: #{4 * $baseline}
+
+  &--list
+    list-style: none
+    margin: 0 0 $baseline
+
+    &-item
+      margin: 0 0 $baseline
+
+      h2
+        margin: 0
+
+  &--content
+    max-width: 36em
+
+  &--author
+    align-items: flex-start
+    background: $color-gray
+    display: flex
+    max-width: 36em
+    padding: $baseline
+
+    &-image
+      flex: 0 0 #{4 * $baseline}
+      height: #{4 * $baseline}
+      margin-right: $baseline
+      width: #{4 * $baseline}
+
+    &-details
+      flex: 1 1 100%
+
+      &-links
+        a
+          display: inline-block
+          margin-right: $baseline
