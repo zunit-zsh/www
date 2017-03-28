@@ -77,7 +77,8 @@ class Header
       .then (version) ->
         placeholder.innerHTML = version
 
-        installDocs.innerHTML = installDocs.innerHTML.replace(/__version__/g, version)
+        installDocs.innerHTML = installDocs.innerHTML
+          .replace(/__version__/g, version)
 
 
 
