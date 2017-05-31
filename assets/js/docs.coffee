@@ -116,7 +116,6 @@ module.exports = class Docs
 
         # Filter the results
         results = fuse.search(term)
-        console.log results
 
         # Clear the search results pane
         searchResultsPane.innerHTML = ''
@@ -226,10 +225,6 @@ module.exports = class Docs
       # Get the updated at timestamp
       updatedAt = parseInt localStorage.getItem('documentation_updated_at')
       timestamp = new Date().getTime()
-
-      console.log(updatedAt)
-      console.log(timestamp)
-      console.log((updatedAt + 300) > timestamp)
 
       # If we are within the cache time, get and parse the
       # cached documentation list

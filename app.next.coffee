@@ -96,7 +96,7 @@ module.exports =
 
   locals:
     baseUrl: ''
-    baseDomain: 'https://beta.zunit.xyz'
+    baseDomain: 'https://next.zunit.xyz'
     render: fs.readFileSync
     md: marked
     date: (date) ->
