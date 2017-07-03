@@ -87,6 +87,30 @@ block docs-content
 
   section
     :marked
+      ### is_substring_of
+
+      Searches for the value within a defined string, and fails if it is not found.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert 'unicorns' is_substring_of 'I love unicorns!'
+      ```
+
+  section
+    :marked
+      ### is_not_substring_of
+
+      Searches for the value within a defined string, and fails if it is found.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert 'unicorns' is_not_substring_of 'I love rainbows!'
+      ```
+
+  section
+    :marked
       ### matches
 
       Compares the value against a PCRE-compliant regular expression, and fails the test if it does not match.
