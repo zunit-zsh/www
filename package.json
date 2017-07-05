@@ -5,13 +5,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/molovo/zunit-www"
+    "url": "https://github.com/zunit-zsh/www"
   },
   "author": "molovo",
   "bugs": {
-    "url": "https://github.com/molovo/zunit-www/issues"
+    "url": "https://github.com/zunit-zsh/www/issues"
   },
-  "homepage": "https://github.com/molovo/zunit-www",
+  "homepage": "https://github.com/zunit-zsh/www",
   "dependencies": {
     "autoprefixer": "^6.2.3",
     "coffee-script": "^1.0.0",

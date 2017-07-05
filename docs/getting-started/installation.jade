@@ -57,7 +57,7 @@ block docs-content
         zplug 'molovo/revolver', \
           as:command, \
           use:revolver
-        zplug 'molovo/zunit', \
+        zplug 'zunit-zsh/zunit', \
           as:command, \
           use:zunit, \
           hook-build:'./build.zsh'
@@ -72,7 +72,7 @@ block docs-content
         zplug 'molovo/revolver', \
           as:command, \
           use:revolver
-        zplug 'molovo/zunit', \
+        zplug 'zunit-zsh/zunit', \
           at:next, \
           as:command, \
           use:zunit, \
@@ -93,17 +93,17 @@ block docs-content
       curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
       # Install ZUnit into $path
-      curl -L https://github.com/molovo/zunit/releases/download/__version__/zunit > /usr/local/bin/zunit
+      curl -L https://github.com/zunit-zsh/zunit/releases/download/__version__/zunit > /usr/local/bin/zunit
 
       # Optional, install ZUnit ZSH completion into $fpath
-      curl -L https://github.com/molovo/zunit/releases/download/__version__/zunit.zsh-completion > "${fpath[1]}/_zunit"
+      curl -L https://github.com/zunit-zsh/zunit/releases/download/__version__/zunit.zsh-completion > "${fpath[1]}/_zunit"
       ```
 
   section
     :marked
       ### Building From Source
 
-      To build ZUnit from source, once you've installed the dependencies just clone the [git repository](https://github.com/molovo/zunit) and run the included `build.zsh` script. Once done, copy the `zunit` executable to somewhere in your `$path`.
+      To build ZUnit from source, once you've installed the dependencies just clone the [git repository](https://github.com/zunit-zsh/zunit) and run the included `build.zsh` script. Once done, copy the `zunit` executable to somewhere in your `$path`.
 
   feature.bump
     if baseDomain === 'https://zunit.xyz'
@@ -114,7 +114,7 @@ block docs-content
         curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
         # Build ZUnit from source
-        git clone https://github.com/molovo/zunit
+        git clone https://github.com/zunit-zsh/zunit
         cd zunit
         ./build.zsh
 
@@ -132,7 +132,7 @@ block docs-content
         curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
         # Build ZUnit from source
-        git clone https://github.com/molovo/zunit
+        git clone https://github.com/zunit-zsh/zunit
         cd zunit
         git checkout next
         ./build.zsh
