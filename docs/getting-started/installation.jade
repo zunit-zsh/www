@@ -81,6 +81,26 @@ block docs-content
 
   section
     :marked
+      ### Installing with [Homebrew](https://brew.sh)
+
+      ZUnit and its dependencies can all be installed with Homebrew.
+
+  feature.bump
+    if baseDomain === 'https://zunit.xyz'
+      :marked
+        ```bash
+        brew tap molovo/revolver
+        brew install zunit-zsh/zunit/zunit
+        ```
+    else
+      :marked
+        ```bash
+        brew tap molovo/revolver
+        brew install --devel zunit-zsh/zunit/zunit
+        ```
+
+  section
+    :marked
       ### Installing Manually
 
       To install manually, install the dependencies, and then download the ZUnit executable straight into your `$path`.
