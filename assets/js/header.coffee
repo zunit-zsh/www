@@ -102,10 +102,10 @@ class Header
         resolve version
         return
 
-      url = 'https://api.github.com/repos/molovo/zunit/releases/latest'
+      url = 'https://api.github.com/repos/zunit-zsh/zunit/releases/latest'
       if window.baseDomain isnt 'https://zunit.xyz'
         next = true
-        url  = 'https://api.github.com/repos/molovo/zunit/releases'
+        url  = 'https://api.github.com/repos/zunit-zsh/zunit/releases'
 
       # Fetch the list from the stored JSON file
       fetch url
