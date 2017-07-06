@@ -18,7 +18,7 @@ block docs-content
       ### Requirements
 
       * ZSH 4.3.12+
-      * The [color](https://github.com/molovo/color) and [revolver](https://github.com/molovo/revolver) executables.
+      * [Revolver](https://github.com/molovo/revolver)
 
   feature
 
@@ -50,10 +50,6 @@ block docs-content
     if baseDomain === 'https://zunit.xyz'
       :marked
         ```bash
-        zplug 'molovo/color', \
-          as:command, \
-          use:'color.zsh', \
-          rename-to:color
         zplug 'molovo/revolver', \
           as:command, \
           use:revolver
@@ -65,10 +61,6 @@ block docs-content
     else
       :marked
         ```bash
-        zplug 'molovo/color', \
-          as:command, \
-          use:'color.zsh', \
-          rename-to:color
         zplug 'molovo/revolver', \
           as:command, \
           use:revolver
@@ -106,9 +98,8 @@ block docs-content
   feature.bump.install--version-instructions
     :marked
       ```bash
-      # Install color and revolver
+      # Install revolver
       curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
-      curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
       # Install ZUnit into $path
       curl -L https://github.com/zunit-zsh/zunit/releases/download/__version__/zunit > /usr/local/bin/zunit
@@ -127,9 +118,8 @@ block docs-content
     if baseDomain === 'https://zunit.xyz'
       :marked
         ```bash
-        # Install color and revolver
+        # Install revolver
         curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
-        curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
         # Build ZUnit from source
         git clone https://github.com/zunit-zsh/zunit
@@ -145,9 +135,8 @@ block docs-content
     else
       :marked
         ```bash
-        # Install color and revolver
+        # Install revolver
         curl -L https://raw.githubusercontent.com/molovo/revolver/master/revolver > /usr/local/bin/revolver
-        curl -L https://raw.githubusercontent.com/molovo/color/master/color.zsh > /usr/local/bin/color
 
         # Build ZUnit from source
         git clone https://github.com/zunit-zsh/zunit
