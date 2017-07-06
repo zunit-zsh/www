@@ -125,3 +125,45 @@ block docs-content
         # Test code here
       }
       ```
+
+  section
+    :marked
+      ### Pass a test manually
+
+      If you want to pass a test manually, use the `pass` helper method. This will stop execution of the test immediately, and mark it as passed.
+
+  feature.bump
+    :marked
+      ```zunit
+      @test 'Test will pass' {
+        pass
+      }
+      ```
+
+  section
+    :marked
+      ### Fail a test manually
+
+      If you want to fail a test manually, use the `fail` helper method. This will stop execution of the test immediately, mark it as failed, and print the message passed to it.
+
+  feature.bump
+    :marked
+      ```zunit
+      @test 'Test will fail' {
+        fail 'Failed'
+      }
+      ```
+
+  section
+    :marked
+      ### Throw an error
+
+      If you want to throw an error manually, use the `error` helper method. This will stop execution of the test immediately, mark it as errored, and print the error message passed to it.
+
+  feature.bump
+    :marked
+      ```zunit
+      @test 'Test will error' {
+        error 'Something went wrong'
+      }
+      ```
