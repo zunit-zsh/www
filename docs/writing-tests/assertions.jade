@@ -39,6 +39,54 @@ block docs-content
 
   section
     :marked
+      ### is_positive
+
+      Checks an integer to ensure that it is positive, and fails the test if it is not.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert 1 is_positive
+      ```
+
+  section
+    :marked
+      ### is_negative
+
+      Checks an integer to ensure that it is negative, and fails the test if it is not.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert -1 is_negative
+      ```
+
+  section
+    :marked
+      ### is_greater_than
+
+      Compares two integers to ensure one is greater, and fails the test if it is not.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert 2 is_greater_than 1
+      ```
+
+  section
+    :marked
+      ### is_less_than
+
+      Compares two integers to ensure one is lesser, and fails the test if it is not.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert 1 is_less_than 2
+      ```
+
+  section
+    :marked
       ### same_as
 
       Compares two strings to ensure that they are equal, and fails the test if they are not
