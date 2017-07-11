@@ -159,6 +159,30 @@ block docs-content
 
   section
     :marked
+      ### contains
+
+      Checks if the value contains a defined string, and fails if it is not found.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert 'I love unicorns!' contains 'unicorns'
+      ```
+
+  section
+    :marked
+      ### does_not_contain
+
+      Checks if the value contains a defined string, and fails if it is found.
+
+  feature.bump
+    :marked
+      ```zunit
+      assert 'I love rainbows!' does_not_contain 'unicorns'
+      ```
+
+  section
+    :marked
       ### matches
 
       Compares the value against a PCRE-compliant regular expression, and fails the test if it does not match.
