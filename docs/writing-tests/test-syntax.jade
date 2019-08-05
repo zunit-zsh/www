@@ -92,18 +92,49 @@ block docs-content
 
       Each line of the output is also stored in the `$lines` array, allowing you to run assertions against individual lines.
 
+      The command can use complex constructs like `;`, `|`, `||`, `&&`, redirections, etc.  but they should be quoted.
+
   feature.bump
     :marked
       ```zunit
       @test 'Test command output' {
         # Run the command, including arguments
-        run ls ~/my-dir
+        run ls ~/my-dir \| head -n 3
 
         assert $state equals 0
 
         assert "$output" is_not_empty
 
         assert "${lines[3]}" equals 'my-third-file'
+      }
+      ```
+
+  section
+    :marked
+      ### Evaluating code
+
+      With the use of the eval-like `evl` helper you can run e.g. functions and test for various side-effects, like a value of a global parameter. So it not only allows you to make assertions on its exit status and output, but also on the changed state of Zshell.
+
+      Like with the `run` helper, the command's exit code is stored in the `$state` variable.
+
+      The full output of the command is stored in `$output`.
+
+      Each line of the output is also stored in the `$lines` array, allowing you to run assertions against individual lines.
+
+      The command can use complex constructs like `;`, `|`, `||`, `&&`, redirections, etc.  but they should be quoted.
+
+  feature.bump
+    :marked
+      ```zunit
+      @test 'Test command output' {
+        # Run the function through eval
+        # It returns in $reply array
+        evl a-function-returning-in-reply arg1 arg2
+
+        assert $state equals 0
+
+        assert "${reply[1]}" equals 'my-answer-1'
+        assert "${reply[2]}" equals 'my-answer-2'
       }
       ```
 
