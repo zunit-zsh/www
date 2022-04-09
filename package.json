@@ -28,7 +28,7 @@
     "js-pipeline": "0.2.x",
     "jstransformer-marked": "^1.0.0",
     "marked": "0.3.x",
-    "moment": "^2.15.2",
+    "moment": "^2.29.2",
     "node-sass": "^4.5.3",
     "postcss": "^5.0.13",
     "roots": "^5.1.0",
